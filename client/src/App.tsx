@@ -4,7 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Modelo1 from "./pages/modelo-1";
+import Modelo1 from "./pages/modelo-1.tsx";
 
 function Router() {
   return (
