@@ -1,0 +1,188 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display-botanical: "Cormorant Garamond", serif;
+  --font-display-pearl: "Fraunces", serif;
+  --font-display-couture: "Bodoni Moda", serif;
+  --font-italiana: "Italiana", serif;
+  --font-body: "Inter", sans-serif;
+  --font-body-pearl: "Manrope", sans-serif;
+  --font-body-botanical: "DM Sans", sans-serif;
+}
+
+:root {
+  --primary: oklch(0.45 0.04 50);
+  --primary-foreground: oklch(0.98 0.005 80);
+  --radius: 0.5rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.235 0.015 65);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.015 65);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.015 65);
+  --secondary: oklch(0.98 0.005 80);
+  --secondary-foreground: oklch(0.4 0.015 65);
+  --muted: oklch(0.967 0.005 80);
+  --muted-foreground: oklch(0.552 0.016 65);
+  --accent: oklch(0.967 0.005 80);
+  --accent-foreground: oklch(0.141 0.005 65);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.92 0.004 80);
+  --input: oklch(0.92 0.004 80);
+  --ring: oklch(0.623 0.05 50);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  ::selection {
+    background-color: rgba(155, 123, 91, 0.25);
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+/* MODEL 1 — QUIET LUXURY BOTANICAL */
+.theme-botanical {
+  --b-bg: #f7f2ec;
+  --b-bg-soft: #efe6dc;
+  --b-bg-warm: #ebe0d2;
+  --b-text: #3a2e25;
+  --b-text-soft: #6a5a4d;
+  --b-accent: #9b7b5b;
+  --b-accent-soft: #c9a98a;
+  --b-sage: #a8b59e;
+  --b-line: #d6c8b8;
+  background-color: var(--b-bg);
+  color: var(--b-text);
+  font-family: var(--font-body-botanical);
+}
+.theme-botanical .display {
+  font-family: var(--font-display-botanical);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+.theme-botanical .eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--b-accent);
+}
+.theme-botanical .filete {
+  height: 1px;
+  background: var(--b-line);
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-slow { animation: spin-slow 30s linear infinite; }
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 0;
+  background-color: currentColor;
+  transition: width 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+.arch-frame {
+  border-top-left-radius: 50% 35%;
+  border-top-right-radius: 50% 35%;
+  overflow: hidden;
+}
