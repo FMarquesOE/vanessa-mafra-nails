@@ -3,106 +3,109 @@
  * MODELO 1 — "Quiet Luxury Botânico" (Editorial Naturalista)
  * Vanessa Mafra · Especialista em Unhas
  * ============================================================================
- *
- * Dependências necessárias (já presentes no package.json do projeto):
- * - react
- * - framer-motion
- *
- * Como usar no projeto:
- * 1. Copie este arquivo para client/src/pages/modelo-1.tsx
- * 2. No seu roteador (ex: App.tsx com wouter):
- *    import Modelo1 from "./pages/modelo-1";
- *    <Route path="/modelo-1" component={Modelo1} />
- *
- * Para substituir as fotos placeholder:
- * Procure por "👆 Substitua" nos comentários inline.
+ * VERSÃO MOBILE-RESPONSIVE
+ * Usa useIsMobile() do projeto para adaptar layout entre desktop e mobile.
  */
 import { motion, useInView, useScroll, useTransform, Variants } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useIsMobile } from "@/hooks/useMobile";
+import { AlignCenter } from "lucide-react";
 
 // =============================================================================
-// ✏️ CONFIGURAÇÃO — edite apenas este bloco para personalizar tudo
+// ✏️ CONFIGURAÇÃO
 // =============================================================================
 const CONFIG = {
   nome: "Vanessa Mafra",
   titulo: "Especialista em Unhas",
   slogan: "Sofisticação com Naturalidade",
   descricaoHero:
-    "Estúdio especializado em unhas de gel naturalistas em Duque de Caxias. Um espaço onde técnica e delicadeza se encontram.",
+    "Espaço especializado em unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e delicadeza se encontram.",
   endereco: "Av. Dr. Manuel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
-  whatsapp: "5521999277505", // formato internacional sem +
+  whatsapp: "5521999277505",
   instagram: "@vanessamafra_especialistanails",
-  horario: "Segunda a Sábado, 9h às 19h",
+  horario: "Segunda a Sábado, 9h às 19h - Somente com horário marcado!",
   anoFundacao: "2024",
   cores: {
-    fundo: "#F7F2EC",         // off-white cremoso
-    fundoSecundario: "#EFE6DC", // areia clara
-    acento: "#9B7B5B",        // taupe quente / mocha
-    acentoClaro: "#C9A98A",   // champanhe rosado
-    texto: "#3A2E25",         // chocolate suave
-    salvia: "#A8B59E",        // verde-sálvia sutil
+    fundo: "#F7F2EC",
+    fundoSecundario: "#EFE6DC",
+    acento: "#9B7B5B",
+    acentoClaro: "#C9A98A",
+    texto: "#3A2E25",
+    salvia: "#A8B59E",
   },
   servicos: [
     {
       numero: "01",
-      nome: "Manicure SPA",
+      nome: "Unhas em Gel",
       descricao:
-        "Ritual completo de cuidado para as mãos, com esfoliação, hidratação profunda e esmaltação de longa duração.",
-      duracao: "1h30",
+        "Alongamento e sobreposta em gel com acabamento naturalista — Força e elegância que duram semanas. Perfeitas, do primeiro ao último dia.",
+      duracao: "2h00",
     },
     {
       numero: "02",
-      nome: "Pedicure SPA",
+      nome: "Banho de Gel",
       descricao:
-        "Tratamento terapêutico para os pés, aliando técnica e conforto em cada etapa do processo.",
+        "O brilho que transforma qualquer esmalte. Cor intensa, acabamento impecável, durabilidade real",
       duracao: "1h30",
     },
     {
       numero: "03",
-      nome: "Unhas de Gel",
+      nome: "Blindagem",
       descricao:
-        "Alongamento e sobreposta em gel com acabamento naturalista — durabilidade sem abrir mão da elegância discreta.",
-      duracao: "2h30",
+        "Proteção invisível, unhas inabaláveis. Para quem não abre mão de unhas perfeitas — nem no dia a dia mais intenso.",
+      duracao: "1h00",
     },
     {
       numero: "04",
+      nome: "Mão e Pé Tradicional",
+      descricao:
+        "O clássico que nunca sai de moda. Cuidado completo, acabamento bonito e aquela sensação gostosa de mãos e pés em dia.",
+      duracao: "00h50",
+    },
+    {
+      numero: "05",
+      nome: "SPA dos Pés",
+      descricao:
+        "Uma pausa de luxo para os seus pés. Esfoliação, hidratação profunda e muito relaxamento — porque seus pés merecem esse mimo.",
+      duracao: "2h",
+    },
+    {
+      numero: "06",
       nome: "Plástica dos Pés",
       descricao:
-        "Tratamento estético avançado que transforma a aparência dos pés com resultado imediato e duradouro.",
+        "Tratamento estético avançado que transforma a aparência dos pés. Combate calosidades, rachaduras e promove uma renovação completa — para pés que parecem renascidos.",
       duracao: "2h",
     },
   ],
   depoimentos: [
     {
-      nome: "Ana Carolina",
+      nome: "Suely Santos",
       texto:
-        "A Vanessa tem uma habilidade incrível de entender o que você quer sem precisar explicar muito. Saí com as mãos perfeitas.",
+        "Atendimento impecável, nail muito simpática, profissional, atenciosa. Espaço confortável, música boa, climatizado, com direito a massagem nos pés!",
     },
     {
-      nome: "Juliana R.",
+      nome: "Denise Boschiglia",
       texto:
-        "O estúdio é um refúgio. A atenção aos detalhes, o cuidado com cada etapa — é uma experiência completa, não apenas um serviço.",
+        "Profissional competente e muito detalhista, coisa que mais amo nela",
     },
     {
-      nome: "Mariana L.",
+      nome: "Safira Canuto",
       texto:
-        "Fiz as unhas de gel pela primeira vez aqui. O resultado é tão natural que as pessoas perguntam se são minhas próprias unhas.",
+        "Vanessa como sempre muito agradável de uma simpatia ímpar, ótimo atendimento e um serviço de excelência.",
     },
   ],
-  // Fotos da galeria — substitua as strings por caminhos reais: "/fotos/trabalho-01.jpg"
   galeria: [
-    { label: "Gel Naturalista", src: "/fotos/trabalho-01.jpg" },
-    { label: "Manicure SPA", src: "/fotos/trabalho-02.jpg" },
-    { label: "Pedicure SPA", src: "/fotos/trabalho-03.jpg" },
-    { label: "Plástica dos Pés", src: "/fotos/trabalho-04.jpg" },
-    { label: "Gel Curto", src: "/fotos/trabalho-05.jpg" },
-    { label: "French Naturalista", src: "/fotos/trabalho-06.jpg" },
+    { label: "Unhas em Gel", src: "client/src/fotos/trabalho-01.jpg" },
+    { label: "Banho de Gel", src: "client/src/fotos/trabalho-02.jpg" },
+    { label: "Blindagem", src: "client/src/fotos/trabalho-03.jpg" },
+    { label: "Mão e Pé Tradicional", src: "client/src/fotos/trabalho-04.jpg" },
+    { label: "SPA dos Pés", src: "client/src/fotos/trabalho-05.jpg" },
+    { label: "Plástica dos Pés", src: "client/src/fotos/trabalho-06.jpg" },
   ],
 };
 
 // =============================================================================
-// Variantes de animação (framer-motion)
-// ✅ FIX: tipadas explicitamente como Variants para evitar erros de tipo
+// Variantes de animação
 // =============================================================================
 const vFadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -118,8 +121,7 @@ const vStagger: Variants = {
 };
 
 // =============================================================================
-// Componente utilitário: scroll reveal
-// ✅ FIX: removido "as any" do transition
+// Scroll Reveal
 // =============================================================================
 function ScrollReveal({
   children,
@@ -131,7 +133,7 @@ function ScrollReveal({
   style?: React.CSSProperties;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <motion.div
       ref={ref}
@@ -147,7 +149,7 @@ function ScrollReveal({
 }
 
 // =============================================================================
-// Componente: Selo circular giratório
+// Selo circular giratório
 // =============================================================================
 function RotatingSeal({
   size = 140,
@@ -156,8 +158,8 @@ function RotatingSeal({
   size?: number;
   color?: string;
 }) {
-  const radius = size / 2 - 14;
-  const text = `SOFISTICAÇÃO COM NATURALIDADE · ESTÚDIO DE UNHAS · ${CONFIG.anoFundacao} · `;
+  const radius = size / 2 - 16;
+  const text = `SOFISTICAÇÃO COM NATURALIDADE · ELEVANDO SUA AUTOESTIMA ·`;
   return (
     <motion.div
       animate={{ rotate: 360 }}
@@ -187,7 +189,7 @@ function RotatingSeal({
 }
 
 // =============================================================================
-// Componente: Divisor de filete duplo
+// Divisor filete
 // =============================================================================
 function Filete({ color = CONFIG.cores.acento }: { color?: string }) {
   return (
@@ -199,7 +201,7 @@ function Filete({ color = CONFIG.cores.acento }: { color?: string }) {
 }
 
 // =============================================================================
-// Componente: Label de seção com numeração romana
+// Label de seção
 // =============================================================================
 function SectionLabel({
   numero,
@@ -230,14 +232,7 @@ function SectionLabel({
       >
         {numero}
       </span>
-      <div
-        style={{
-          height: 1,
-          width: 40,
-          backgroundColor: color,
-          opacity: 0.3,
-        }}
-      />
+      <div style={{ height: 1, width: 40, backgroundColor: color, opacity: 0.3 }} />
       <span
         style={{
           fontFamily: "Inter, sans-serif",
@@ -256,8 +251,7 @@ function SectionLabel({
 }
 
 // =============================================================================
-// Componente: Frame de foto (placeholder ou imagem real)
-// ✅ FIX: ease tipado com array de números (bezier curve válido)
+// Photo Frame
 // =============================================================================
 function PhotoFrame({
   src = "",
@@ -292,19 +286,12 @@ function PhotoFrame({
       }}
     >
       {src ? (
-        /* 👆 Substitua: com imagem real */
         <img
           src={src}
           alt={alt || label || ""}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
       ) : (
-        /* Placeholder — remova quando tiver a foto */
         <div
           style={{
             width: "100%",
@@ -333,119 +320,406 @@ function PhotoFrame({
 }
 
 // =============================================================================
-// SEÇÃO: Navegação
+// NAVEGAÇÃO — mobile com menu hambúrguer
 // =============================================================================
 function Nav() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+    { label: "Serviços", href: "#servicos" },
+    { label: "Sobre", href: "#sobre" },
+    { label: "Galeria", href: "#galeria" },
+    { label: "Contato", href: "#contato" },
+  ];
+
   return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "20px 64px",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
-        backgroundColor: `${c.fundo}D0`,
-        borderBottom: `1px solid ${c.acento}15`,
-      }}
-    >
-      {/* Logo */}
-      <div
+    <>
+      <nav
         style={{
-          fontFamily: "Cormorant Garamond, serif",
-          fontSize: 14,
-          fontStyle: "italic",
-          fontWeight: 400,
-          color: c.texto,
-          letterSpacing: "0.05em",
-          userSelect: "none",
-          width: '60px', height: '60px',
+          position: "absolute", 
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: isMobile ? "14px 20px" : "20px 64px",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          backgroundColor: `${c.fundo}D0`,
+          borderBottom: `1px solid ${c.acento}15`,
         }}
       >
-        <img src="src/fotos/LogoPrinc.png" alt="Logo" />
-      </div>
+        {/* Logo */}
+<div style={{ display: "flex", alignItems: "center", gap: isMobile ? 6 : 10 }}>
+  <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60, flexShrink: 0 }}>
+    <img
+      src="client/src/fotos/LogoPrinc.png"
+      alt="Logo_Superior"
+      style={{ width: "100%", height: "100%" }}
+    />
+  </div>
+  
+    <span
+      style={{
+        fontFamily: "Cormorant Garamond, serif",
+        fontSize: 14,
+        fontWeight: 550,
+        fontStyle: "italic",
+        color: c.texto,
+        letterSpacing: "0.03em",
+        lineHeight: 1.3, // ← era 4, causava altura excessiva
+        opacity: 0.95,
+        }}
+    >
+      Eleve sua autoestima <br /> cuidando-se como merece!
+    </span>
+</div>
+        
 
-      {/* Links */}
-      <div style={{ display: "flex", gap: 36, alignItems: "center" }}>
-        {[
-          { label: "Serviços", href: "#servicos" },
-          { label: "Sobre", href: "#sobre" },
-          { label: "Galeria", href: "#galeria" },
-          { label: "Contato", href: "#contato" },
-        ].map(({ label, href }) => (
-          <a
-            key={label}
-            href={href}
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontSize: 11,
-              fontWeight: 500,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: c.texto,
-              textDecoration: "none",
-              opacity: 0.55,
-              transition: "opacity 300ms",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.55")}
-          >
-            {label}
-          </a>
-        ))}
+        {/* Desktop links */}
+        {!isMobile && (
+          <div style={{ display: "flex", gap: 36, alignItems: "center" }}>
+            {navLinks.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 11,
+                  fontWeight: 500,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: c.texto,
+                  textDecoration: "none",
+                  opacity: 0.55,
+                  transition: "opacity 300ms",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.55")}
+              >
+                {label}
+              </a>
+            ))}
+            <a
+              href={`https://wa.me/${CONFIG.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: c.fundo,
+                backgroundColor: c.texto,
+                padding: "10px 24px",
+                borderRadius: 2,
+                textDecoration: "none",
+                transition: "background-color 350ms",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = c.acento)}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = c.texto)}
+            >
+              Agendar
+            </a>
+          </div>
+        )}
 
-        {/* CTA */}
-        <a
-          href={`https://wa.me/${CONFIG.whatsapp}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Mobile: CTA + hambúrguer */}
+        {isMobile && (
+          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            <a
+              href={`https://wa.me/${CONFIG.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 10,
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: c.fundo,
+                backgroundColor: c.texto,
+                padding: "8px 16px",
+                borderRadius: 2,
+                textDecoration: "none",
+              }}
+            >
+              Agendar
+            </a>
+            {/* Hambúrguer */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                gap: 5,
+                padding: 4,
+              }}
+              aria-label="Menu"
+            >
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: "block",
+                    width: 22,
+                    height: 1.5,
+                    backgroundColor: c.texto,
+                    opacity: menuOpen && i === 1 ? 0 : 0.7,
+                    transform:
+                      menuOpen
+                        ? i === 0
+                          ? "rotate(45deg) translate(4.5px, 4.5px)"
+                          : i === 2
+                          ? "rotate(-45deg) translate(4.5px, -4.5px)"
+                          : "none"
+                        : "none",
+                    transition: "all 300ms",
+                  }}
+                />
+              ))}
+            </button>
+          </div>
+        )}
+      </nav>
+
+      {/* Mobile dropdown menu */}
+      {isMobile && (
+        <motion.div
+          initial={false}
+          animate={{ height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
           style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: c.fundo,
-            backgroundColor: c.texto,
-            padding: "10px 24px",
-            borderRadius: 2,
-            textDecoration: "none",
-            transition: "background-color 350ms",
+            position: "fixed",
+            top: 76,
+            left: 0,
+            right: 0,
+            zIndex: 99,
+            overflow: "hidden",
+            backgroundColor: c.fundo,
+            borderBottom: `1px solid ${c.acento}20`,
           }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = c.acento)
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = c.texto)
-          }
         >
-          Agendar
-        </a>
-      </div>
-    </nav>
+          <div style={{ padding: "16px 20px 24px" }}>
+            {navLinks.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "block",
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: c.texto,
+                  textDecoration: "none",
+                  opacity: 0.6,
+                  padding: "12px 0",
+                  borderBottom: `1px solid ${c.acento}15`,
+                }}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </>
   );
 }
 
 // =============================================================================
-// SEÇÃO: Hero
+// HERO
 // =============================================================================
 function Hero() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-
-  // Parallax suave de 8% na imagem
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
 
+  if (isMobile) {
+    return (
+      <section
+        ref={ref}
+        style={{
+          minHeight: "100svh",
+          backgroundColor: c.fundo,
+          display: "flex",
+          flexDirection: "column",
+          paddingTop: 76,
+          overflow: "hidden",
+        }}
+      >
+        {/* Imagem no topo no mobile */}
+<div
+  style={{
+    position: "relative",
+    height: "45vw",
+    minHeight: 220,
+    maxHeight: 320,
+    overflow: "visible", // ← era "hidden", clipava o selo
+  }}
+>
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      overflow: "hidden", // ← agora só clipa a imagem
+      background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
+    }}
+  >
+    <img
+      src="client/src/fotos/imagem_001.png"
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      alt="Topo Mobile"
+    />
+  </div>
+
+  {/* Selo fora do overflow hidden */}
+  <div style={{ position: "absolute", bottom: -110, right: 16, zIndex: 10 }}>
+    <RotatingSeal size={100} color={c.acento} />
+  </div>
+</div>
+
+        {/* Texto abaixo */}
+        <div style={{ padding: "48px 24px 60px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <motion.div
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}
+          >
+            <div style={{ height: 1, width: 28, backgroundColor: c.acento, opacity: 0.4 }} />
+            <span
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 10,
+                fontWeight: 600,
+                letterSpacing: "0.28em",
+                textTransform: "uppercase",
+                color: c.acento,
+              }}
+            >
+              Duque de Caxias · RJ
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.08 }}
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontSize: "clamp(44px, 13vw, 72px)",
+              fontWeight: 400,
+              lineHeight: 1.0,
+              color: c.texto,
+              marginBottom: 8,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {CONFIG.nome}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15 }}
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontSize: "clamp(17px, 5vw, 26px)",
+              fontWeight: 300,
+              fontStyle: "italic",
+              color: c.acento,
+              marginBottom: 20,
+              lineHeight: 1.3,
+            }}
+          >
+            {CONFIG.slogan}
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.22 }}
+            style={{
+              fontFamily: "DM Sans, sans-serif",
+              fontSize: 15,
+              fontWeight: 300,
+              lineHeight: 1.8,
+              color: c.texto,
+              opacity: 0.7,
+              marginBottom: 36,
+            }}
+          >
+            {CONFIG.descricaoHero}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3 }}
+            style={{ display: "flex", flexDirection: "column", gap: 14 }}
+          >
+            <a
+              href={`https://wa.me/${CONFIG.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: c.fundo,
+                backgroundColor: c.texto,
+                padding: "16px 24px",
+                borderRadius: 2,
+                textDecoration: "none",
+                textAlign: "center",
+                display: "block",
+              }}
+            >
+              Agendar Agora
+            </a>
+            <a
+              href="#servicos"
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 12,
+                fontWeight: 400,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: c.texto,
+                textDecoration: "none",
+                opacity: 0.45,
+                textAlign: "center",
+                paddingBottom: 2,
+              }}
+            >
+              Ver Serviços →
+            </a>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop hero
   return (
     <section
       ref={ref}
@@ -459,7 +733,6 @@ function Hero() {
         overflow: "hidden",
       }}
     >
-      {/* ── Coluna esquerda: texto ── */}
       <div
         style={{
           display: "flex",
@@ -468,16 +741,13 @@ function Hero() {
           padding: "100px 72px 100px 80px",
         }}
       >
-        {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, x: -16 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 44 }}
         >
-          <div
-            style={{ height: 1, width: 32, backgroundColor: c.acento, opacity: 0.4 }}
-          />
+          <div style={{ height: 1, width: 32, backgroundColor: c.acento, opacity: 0.4 }} />
           <span
             style={{
               fontFamily: "Inter, sans-serif",
@@ -492,7 +762,6 @@ function Hero() {
           </span>
         </motion.div>
 
-        {/* Título */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -510,7 +779,6 @@ function Hero() {
           {CONFIG.nome}
         </motion.h1>
 
-        {/* Slogan em itálico */}
         <motion.p
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
@@ -528,7 +796,6 @@ function Hero() {
           {CONFIG.slogan}
         </motion.p>
 
-        {/* Descrição */}
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -547,7 +814,6 @@ function Hero() {
           {CONFIG.descricaoHero}
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -572,12 +838,8 @@ function Hero() {
               transition: "background-color 400ms",
               display: "inline-block",
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = c.acento)
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = c.texto)
-            }
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = c.acento)}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = c.texto)}
           >
             Agendar Agora
           </a>
@@ -604,76 +866,66 @@ function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Coluna direita: imagem com parallax ── */}
-      <motion.div
-        style={{ y: imgY, position: "relative", overflow: "hidden" }}
-      >
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          style={{ height: "100%", minHeight: "100vh", position: "relative" }}
-          >
-                    
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
-              borderRadius: "48% 0 0 48% / 32% 0 0 32%",
-            }}
-          />
-          {/* Placeholder text */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <img src="src/fotos/imagem_01.jpg" />
+      <motion.div style={{ y: imgY, position: "relative", overflow: "visible" }}> {/* ← visible */}
+  <motion.div
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 1.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+    style={{
+      height: "100%",
+      minHeight: "100vh",
+      position: "relative",
+      borderRadius: "48% 0 0 48% / 32% 0 0 32%",
+      overflow: "hidden", // ← clipa só a imagem
+      background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
+    }}
+  >
+    <img
+      src="client/src/fotos/imagem_001.png"
+      alt="Estúdio"
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        objectPosition: "center top",
+        display: "block",
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        background: `linear-gradient(to right, ${c.fundo}50, transparent 40%)`,
+        pointerEvents: "none",
+      }}
+    />
+  </motion.div>
 
-            <span
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontSize: 10,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: c.texto,
-                opacity: 0.25,
-              }}
-            >
-              // Foto principal aqui //
-            </span>
-          </div>
-
-          {/* Selo giratório flutuando */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: 100,
-              left: -50,
-            }}
-          >
-            <RotatingSeal size={138} color={c.acento} />
-          </div>
-        </motion.div>
-      </motion.div>
+  {/* Selo fora do overflow hidden */}
+  <div style={{ position: "absolute", bottom: 100, left: -80, zIndex: 10 }}>
+    <RotatingSeal size={160} color={c.acento} />
+  </div>
+</motion.div>
     </section>
   );
 }
 
 // =============================================================================
-// SEÇÃO: Sobre
+// SOBRE
 // =============================================================================
 function SobreSection() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+
   return (
     <section
       id="sobre"
-      style={{ backgroundColor: c.fundo, padding: "120px 80px" }}
+      style={{
+        backgroundColor: c.fundo,
+        padding: isMobile ? "72px 24px" : "120px 80px",
+      }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <ScrollReveal>
@@ -683,38 +935,38 @@ function SobreSection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 80,
-            marginTop: 88,
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            gap: isMobile ? 40 : 80,
+            marginTop: isMobile ? 56 : 88,
             alignItems: "center",
           }}
         >
-          {/* Foto em arco */}
-          <ScrollReveal>
-            <PhotoFrame
-              arch
-              aspectRatio="3/4"
-              label="O Estúdio"
-              gradientFallback={`linear-gradient(145deg, ${c.fundoSecundario}, ${c.salvia}60)`}
-            />
-          </ScrollReveal>
+          {/* Foto em arco — escondida no mobile para leveza */}
+          {!isMobile && (
+            <ScrollReveal>
+              <PhotoFrame
+                arch
+                aspectRatio="3/4"
+                label="O Espaço"
+                gradientFallback={`linear-gradient(145deg, ${c.fundoSecundario}, ${c.salvia}60)`}
+              />
+            </ScrollReveal>
+          )}
 
-          {/* Texto */}
           <div>
             <ScrollReveal>
-              <SectionLabel numero="I" label="Sobre o Estúdio" />
+              <SectionLabel numero="I" label="Sobre o Espaço" />
             </ScrollReveal>
 
             <ScrollReveal delay={0.05}>
               <h2
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: "clamp(34px, 3.8vw, 54px)",
+                  fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(34px, 3.8vw, 54px)",
                   fontWeight: 400,
                   color: c.texto,
                   lineHeight: 1.15,
-                  marginBottom: 32,
-                  textAlign: "center",  
+                  marginBottom: 28,
                 }}
               >
                 Naturalidade
@@ -727,16 +979,16 @@ function SobreSection() {
               <p
                 style={{
                   fontFamily: "DM Sans, Inter, sans-serif",
-                  fontSize: 16,
+                  fontSize: isMobile ? 15 : 16,
                   lineHeight: 1.9,
                   color: c.texto,
                   opacity: 0.68,
                   marginBottom: 22,
                 }}
               >
-                O espaço de Vanessa Mafra nasceu da crença de que beleza
+                O espaço Vanessa Mafra nasceu da crença de que beleza
                 verdadeira é aquela que parece natural — como se sempre tivesse
-                estado ali. Especialista em unhas de gel naturalistas, cada
+                estado ali. Especialista em unhas de gel naturalista, cada
                 atendimento é pensado nos mínimos detalhes.
               </p>
             </ScrollReveal>
@@ -745,11 +997,11 @@ function SobreSection() {
               <p
                 style={{
                   fontFamily: "DM Sans, Inter, sans-serif",
-                  fontSize: 16,
+                  fontSize: isMobile ? 15 : 16,
                   lineHeight: 1.9,
                   color: c.texto,
                   opacity: 0.68,
-                  marginBottom: 40,
+                  marginBottom: 36,
                 }}
               >
                 Localizado no Centro de Duque de Caxias, o espaço foi desenhado
@@ -758,31 +1010,23 @@ function SobreSection() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 16,
-                  marginTop: 16,
-                }}
-              >
+              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div
                   style={{
                     width: 8,
                     height: 8,
                     borderRadius: "50%",
                     backgroundColor: c.salvia,
-                    }}
+                  }}
                 />
                 <span
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 12,
+                    fontSize: 11,
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
                     color: c.acento,
                     opacity: 0.65,
-                    textAlign: "center",
                   }}
                 >
                   Especialista em Unhas de Gel
@@ -797,15 +1041,19 @@ function SobreSection() {
 }
 
 // =============================================================================
-// SEÇÃO: Serviços
-// ✅ FIX: removido whileHover com "as any", hover agora via CSS transition
+// SERVIÇOS
 // =============================================================================
 function ServicosSection() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+
   return (
     <section
       id="servicos"
-      style={{ backgroundColor: c.fundoSecundario, padding: "120px 80px" }}
+      style={{
+        backgroundColor: c.fundoSecundario,
+        padding: isMobile ? "72px 24px" : "120px 80px",
+      }}
     >
       <div style={{ maxWidth: 1200, margin: "auto" }}>
         <ScrollReveal>
@@ -820,9 +1068,9 @@ function ServicosSection() {
           viewport={{ once: true, margin: "-60px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 2,
-            marginTop: 64,
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            gap: isMobile ? 2 : 2,
+            marginTop: isMobile ? 40 : 64,
           }}
         >
           {CONFIG.servicos.map((s) => (
@@ -830,7 +1078,7 @@ function ServicosSection() {
               key={s.numero}
               variants={vFadeUp}
               style={{
-                padding: "52px 48px",
+                padding: isMobile ? "36px 24px" : "52px 48px",
                 backgroundColor: c.fundo,
                 border: `1px solid ${c.acento}18`,
                 cursor: "default",
@@ -851,7 +1099,7 @@ function ServicosSection() {
                   opacity: 0.45,
                   letterSpacing: "0.1em",
                   display: "block",
-                  marginBottom: 18,
+                  marginBottom: 14,
                 }}
               >
                 {s.numero}
@@ -859,10 +1107,10 @@ function ServicosSection() {
               <h3
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 30,
+                  fontSize: isMobile ? 26 : 30,
                   fontWeight: 500,
                   color: c.texto,
-                  marginBottom: 16,
+                  marginBottom: 14,
                   lineHeight: 1.2,
                 }}
               >
@@ -871,23 +1119,18 @@ function ServicosSection() {
               <p
                 style={{
                   fontFamily: "DM Sans, Inter, sans-serif",
-                  fontSize: 15,
+                  fontSize: isMobile ? 14 : 15,
                   lineHeight: 1.8,
                   color: c.texto,
                   opacity: 0.62,
-                  marginBottom: 28,
+                  marginBottom: 24,
                 }}
               >
                 {s.descricao}
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <div
-                  style={{
-                    height: 1,
-                    width: 24,
-                    backgroundColor: c.acento,
-                    opacity: 0.3,
-                  }}
+                  style={{ height: 1, width: 24, backgroundColor: c.acento, opacity: 0.3 }}
                 />
                 <span
                   style={{
@@ -907,7 +1150,7 @@ function ServicosSection() {
         </motion.div>
 
         <ScrollReveal>
-          <div style={{ textAlign: "center", marginTop: 56 }}>
+          <div style={{ textAlign: "center", marginTop: 44 }}>
             <a
               href={`https://wa.me/${CONFIG.whatsapp}`}
               target="_blank"
@@ -938,15 +1181,22 @@ function ServicosSection() {
 }
 
 // =============================================================================
-// SEÇÃO: Depoimentos
+// DEPOIMENTOS
 // =============================================================================
 function DepoimentosSection() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+
   return (
-    <section style={{ backgroundColor: c.fundo, padding: "120px 80px" }}>
+    <section
+      style={{
+        backgroundColor: c.fundo,
+        padding: isMobile ? "72px 24px" : "120px 80px",
+      }}
+    >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <ScrollReveal>
-          <SectionLabel numero="III" label="Depoimentos" />
+          <SectionLabel numero="III" label="Avaliações de clientes no Google Mapas" />
           <Filete />
         </ScrollReveal>
 
@@ -957,9 +1207,9 @@ function DepoimentosSection() {
           viewport={{ once: true, margin: "-60px" }}
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 32,
-            marginTop: 64,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
+            gap: isMobile ? 16 : 32,
+            marginTop: isMobile ? 40 : 64,
           }}
         >
           {CONFIG.depoimentos.map((d, i) => (
@@ -967,7 +1217,7 @@ function DepoimentosSection() {
               key={i}
               variants={vFadeUp}
               style={{
-                padding: "40px 36px",
+                padding: isMobile ? "28px 24px" : "40px 36px",
                 border: `1px solid ${c.acento}20`,
                 borderRadius: 4,
               }}
@@ -975,11 +1225,11 @@ function DepoimentosSection() {
               <div
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 48,
+                  fontSize: 42,
                   color: c.acento,
                   opacity: 0.2,
                   lineHeight: 1,
-                  marginBottom: 18,
+                  marginBottom: 14,
                 }}
               >
                 "
@@ -987,25 +1237,18 @@ function DepoimentosSection() {
               <p
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 19,
+                  fontSize: isMobile ? 17 : 19,
                   fontStyle: "italic",
                   lineHeight: 1.65,
                   color: c.texto,
                   opacity: 0.8,
-                  marginBottom: 28,
+                  marginBottom: 24,
                 }}
               >
                 {d.texto}
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <div
-                  style={{
-                    height: 1,
-                    width: 24,
-                    backgroundColor: c.acento,
-                    opacity: 0.3,
-                  }}
-                />
+                <div style={{ height: 1, width: 24, backgroundColor: c.acento, opacity: 0.3 }} />
                 <span
                   style={{
                     fontFamily: "Inter, sans-serif",
@@ -1028,10 +1271,12 @@ function DepoimentosSection() {
 }
 
 // =============================================================================
-// SEÇÃO: Galeria
+// GALERIA
 // =============================================================================
 function GaleriaSection() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+
   const gradients = [
     `linear-gradient(145deg, ${c.fundoSecundario}, ${c.acentoClaro}65)`,
     `linear-gradient(145deg, ${c.salvia}55, ${c.fundoSecundario})`,
@@ -1044,7 +1289,10 @@ function GaleriaSection() {
   return (
     <section
       id="galeria"
-      style={{ backgroundColor: c.fundoSecundario, padding: "120px 80px" }}
+      style={{
+        backgroundColor: c.fundoSecundario,
+        padding: isMobile ? "72px 24px" : "120px 80px",
+      }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <ScrollReveal>
@@ -1055,9 +1303,9 @@ function GaleriaSection() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 16,
-            marginTop: 64,
+            gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)",
+            gap: isMobile ? 10 : 16,
+            marginTop: isMobile ? 40 : 64,
           }}
         >
           {CONFIG.galeria.map((item, i) => (
@@ -1066,7 +1314,7 @@ function GaleriaSection() {
                 src={item.src}
                 label={item.label}
                 arch={i === 0 || i === 4}
-                aspectRatio={i % 3 === 1 ? "3/4" : "1/1"}
+                aspectRatio={isMobile ? "1/1" : (i % 3 === 1 ? "3/4" : "1/1")}
                 gradientFallback={gradients[i]}
               />
             </ScrollReveal>
@@ -1074,7 +1322,7 @@ function GaleriaSection() {
         </div>
 
         <ScrollReveal>
-          <div style={{ textAlign: "center", marginTop: 44 }}>
+          <div style={{ textAlign: "center", marginTop: isMobile ? 32 : 44 }}>
             <a
               href={`https://instagram.com/${CONFIG.instagram.replace("@", "")}`}
               target="_blank"
@@ -1102,62 +1350,52 @@ function GaleriaSection() {
 }
 
 // =============================================================================
-// SEÇÃO: Contato
+// CONTATO
 // =============================================================================
 function ContatoSection() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+
   return (
     <section
       id="contato"
       style={{
         backgroundColor: c.texto,
-        padding: "120px 80px",
+        padding: isMobile ? "72px 24px" : "120px 80px",
       }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 80,
+            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            gap: isMobile ? 48 : 80,
             alignItems: "center",
           }}
         >
-          {/* Coluna de texto */}
           <div>
             <ScrollReveal>
-              <SectionLabel
-                numero="V"
-                label="Localização & Contato"
-                color={c.acentoClaro}
-              />
+              <SectionLabel numero="V" label="Localização & Contato" color={c.acentoClaro} />
             </ScrollReveal>
 
             <ScrollReveal delay={0.05}>
               <h2
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: "clamp(34px, 3.8vw, 54px)",
+                  fontSize: isMobile ? "clamp(32px, 10vw, 48px)" : "clamp(34px, 3.8vw, 54px)",
                   fontWeight: 400,
                   color: c.fundo,
                   lineHeight: 1.15,
-                  marginBottom: 44,
+                  marginBottom: isMobile ? 32 : 44,
                 }}
               >
-                Venha nos 
-                <em style={{ color: c.acentoClaro }}> visitar!</em>
+                Venha nos{" "}
+                <em style={{ color: c.acentoClaro }}>visitar!</em>
               </h2>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 28,
-                  marginBottom: 52,
-                }}
-              >
+              <div style={{ display: "flex", flexDirection: "column", gap: 24, marginBottom: 40 }}>
                 {[
                   { label: "Endereço", valor: CONFIG.endereco },
                   { label: "Horário", valor: CONFIG.horario },
@@ -1174,7 +1412,7 @@ function ContatoSection() {
                         color: c.acentoClaro,
                         opacity: 0.55,
                         display: "block",
-                        marginBottom: 7,
+                        marginBottom: 6,
                       }}
                     >
                       {label}
@@ -1182,7 +1420,7 @@ function ContatoSection() {
                     <span
                       style={{
                         fontFamily: "DM Sans, Inter, sans-serif",
-                        fontSize: 16,
+                        fontSize: isMobile ? 15 : 16,
                         color: c.fundo,
                         opacity: 0.7,
                         lineHeight: 1.5,
@@ -1208,34 +1446,25 @@ function ContatoSection() {
                   textTransform: "uppercase",
                   color: c.texto,
                   backgroundColor: c.acentoClaro,
-                  padding: "16px 40px",
+                  padding: isMobile ? "16px 24px" : "16px 40px",
                   borderRadius: 2,
                   textDecoration: "none",
-                  display: "inline-block",
+                  display: isMobile ? "block" : "inline-block",
+                  textAlign: isMobile ? "center" : "left",
                   transition: "background-color 350ms",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = c.fundo)
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = c.acentoClaro)
-                }
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = c.fundo)}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = c.acentoClaro)}
               >
-                Agendar pelo WhatsApp
+                Agende agora pelo WhatsApp
               </a>
             </ScrollReveal>
           </div>
 
-          {/* Coluna do selo */}
+          {/* Selo — centralizado no mobile */}
           <ScrollReveal>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <RotatingSeal size={220} color={c.acentoClaro} />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <RotatingSeal size={isMobile ? 160 : 220} color={c.acentoClaro} />
             </div>
           </ScrollReveal>
         </div>
@@ -1245,41 +1474,64 @@ function ContatoSection() {
 }
 
 // =============================================================================
-// SEÇÃO: Rodapé
+// FOOTER
 // =============================================================================
 function Footer() {
   const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+
   return (
     <footer
+  style={{
+    backgroundColor: "black",
+    borderTop: `1px solid ${c.fundo}18`,
+    padding: isMobile ? "24px 20px" : "28px 80px",
+    display: "flex",
+    flexDirection: isMobile ? "column" : "row",
+    justifyContent: isMobile ? "center" : "space-between",
+    alignItems: "center",
+    gap: isMobile ? 20 : 0,
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: 3,
+      backgroundColor: "rgba(255, 255, 255, 0.5)", // ← máscara branca
+      borderRadius: 45,                               // ← bordas arredondadas
+      padding: isMobile ? "6px 12px" : "8px 16px",  // ← espaço interno
+    }}
+  >
+    <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60 }}>
+      <img
+        src="client/src/fotos/LogoPrinc.png"
+        alt="Logo Inferior"
+        style={{ width: "100%", height: "100%" }}
+      />
+    </div>
+    <span
       style={{
-        backgroundColor: c.texto,
-        borderTop: `1px solid ${c.fundo}18`,
-        padding: "28px 80px",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
+        fontFamily: "Cormorant Garamond, serif",
+        fontSize: 16,
+        fontStyle: "bold",
+        color: c.texto,  // ← trocado de c.fundo para ficar legível sobre fundo branco
+        lineHeight: 3,
       }}
     >
-      <span
-        style={{
-          fontFamily: "Cormorant Garamond, serif",
-          fontSize: 17,
-          fontStyle: "italic",
-          color: c.fundo,
-          opacity: 0.35,
-        }}
-      >
-        <div
-        style={{
-          width: '60px', height: '60px',
-        }}
-      >
-        <img src="src/fotos/LogoPrinc.png" alt="Logo" />  
-      </div>
       {CONFIG.nome}
-      </span>
+    </span>
+  </div>
 
-      <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: isMobile ? 20 : 32,
+          alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "center",
+        }}
+      >
         <a
           href={`https://instagram.com/${CONFIG.instagram.replace("@", "")}`}
           target="_blank"
@@ -1335,7 +1587,7 @@ function Footer() {
 }
 
 // =============================================================================
-// Componente raiz da página
+// Página principal
 // =============================================================================
 export default function Modelo1() {
   const c = CONFIG.cores;
