@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  wouter@3.10.0:
+    hash: 621e652b748117f1cbf3498163566d7766acf8675df0f26414dd370cab2eb1ab
+    path: patches/wouter@3.10.0.patch
+
 importers:
 
   .:
@@ -156,8 +161,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       wouter:
-        specifier: ^3.7.1
-        version: 3.10.0(react@19.2.6)
+        specifier: ^3.10.0
+        version: 3.10.0(patch_hash=621e652b748117f1cbf3498163566d7766acf8675df0f26414dd370cab2eb1ab)(react@19.2.6)
       zod:
         specifier: ^4.1.12
         version: 4.4.3
@@ -7368,7 +7373,7 @@ snapshots:
       siginfo: 2.0.0
       stackback: 0.0.2
 
-  wouter@3.10.0(react@19.2.6):
+  wouter@3.10.0(patch_hash=621e652b748117f1cbf3498163566d7766acf8675df0f26414dd370cab2eb1ab)(react@19.2.6):
     dependencies:
       mitt: 3.0.1
       react: 19.2.6

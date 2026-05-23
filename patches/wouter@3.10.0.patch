@@ -24,3 +24,4 @@ diff --git a/src/index.js b/src/index.js
 +
    for (const element of flattenChildren(children)) {
      let match = 0;
+ 
