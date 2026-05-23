@@ -1313,7 +1313,6 @@ function GaleriaSection() {
               <PhotoFrame
                 src={item.src}
                 label={item.label}
-                arch={i === 0 || i === 4}
                 aspectRatio={isMobile ? "1/1" : (i % 3 === 1 ? "3/4" : "1/1")}
                 gradientFallback={gradients[i]}
               />
