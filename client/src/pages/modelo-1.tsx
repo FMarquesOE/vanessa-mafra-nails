@@ -95,12 +95,12 @@ const CONFIG = {
     },
   ],
   galeria: [
-    { label: "Unhas em Gel", src: "/fotos/UnhasGel.jpg" },
-    { label: "Banho de Gel", src: "/fotos/BanhoGel.jpg" },
-    { label: "Blindagem", src: "/fotos/Blindagem.jpg" },
-    { label: "Mão e Pé Tradicional", src: "/fotos/MPTradicional.jpg" },
-    { label: "SPA dos Pés", src: "/fotos/SPA.jpg" },
-    { label: "Plástica dos Pés", src: "/fotos/Plastica.jpg" },
+    { label: "Unhas em Gel", src: "/fotos/UnhasGel.jpeg" },
+    { label: "Banho de Gel", src: "/fotos/BanhoGel.jpeg" },
+    { label: "Blindagem", src: "/fotos/Blindagem.jpeg" },
+    { label: "Mão e Pé Tradicional", src: "/fotos/MPTradicional.jpeg" },
+    { label: "SPA dos Pés", src: "/fotos/SPA.jpeg" },
+    { label: "Plástica dos Pés", src: "/fotos/Plastica.jpeg" },
   ],
 };
 
