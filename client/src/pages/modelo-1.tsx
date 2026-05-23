@@ -95,12 +95,12 @@ const CONFIG = {
     },
   ],
   galeria: [
-    { label: "Unhas em Gel", src: "/fotos/trabalho-01.jpg" },
-    { label: "Banho de Gel", src: "/fotos/trabalho-02.jpg" },
-    { label: "Blindagem", src: "/fotos/trabalho-03.jpg" },
-    { label: "Mão e Pé Tradicional", src: "/fotos/trabalho-04.jpg" },
-    { label: "SPA dos Pés", src: "/fotos/trabalho-05.jpg" },
-    { label: "Plástica dos Pés", src: "/fotos/trabalho-06.jpg" },
+    { label: "Unhas em Gel", src: "/fotos/UnhasGel.jpg" },
+    { label: "Banho de Gel", src: "/fotos/BanhoGel.jpg" },
+    { label: "Blindagem", src: "/fotos/Blindagem.jpg" },
+    { label: "Mão e Pé Tradicional", src: "/fotos/MPTradicional.jpg" },
+    { label: "SPA dos Pés", src: "/fotos/SPA.jpg" },
+    { label: "Plástica dos Pés", src: "/fotos/Plastica.jpg" },
   ],
 };
 
@@ -357,7 +357,7 @@ function Nav() {
 <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 6 : 10 }}>
   <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60, flexShrink: 0 }}>
     <img
-      src="/fotos/LogoPrinc.png"
+      src="/fotos/Logo.png"
       alt="Logo_Superior"
       style={{ width: "100%", height: "100%" }}
     />
@@ -583,7 +583,7 @@ function Hero() {
     }}
   >
     <img
-      src="/fotos/imagem_001.png"
+      src="/fotos/ImgVanessa.png"
       style={{ width: "100%", height: "100%", objectFit: "cover" }}
       alt="Topo Mobile"
     />
@@ -881,7 +881,7 @@ function Hero() {
     }}
   >
     <img
-      src="/fotos/imagem_001.png"
+      src="/fotos/ImgVanessa.png"
       alt="Estúdio"
       style={{
         position: "absolute",
@@ -1505,7 +1505,7 @@ function Footer() {
   >
     <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60 }}>
       <img
-        src="/fotos/LogoPrinc.png"
+        src="/fotos/Logo.png"
         alt="Logo Inferior"
         style={{ width: "100%", height: "100%" }}
       />
