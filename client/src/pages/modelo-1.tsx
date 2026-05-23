@@ -67,14 +67,14 @@ const CONFIG = {
       nome: "SPA dos Pés",
       descricao:
         "Uma pausa de luxo para os seus pés. Esfoliação, hidratação profunda e muito relaxamento — porque seus pés merecem esse mimo.",
-      duracao: "2h",
+      duracao: "2h00",
     },
     {
       numero: "06",
       nome: "Plástica dos Pés",
       descricao:
         "Tratamento estético avançado que transforma a aparência dos pés. Combate calosidades, rachaduras e promove uma renovação completa — para pés que parecem renascidos.",
-      duracao: "2h",
+      duracao: "2h00",
     },
   ],
   depoimentos: [
@@ -224,9 +224,9 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Cormorant Garamond, serif",
-          fontSize: 13,
+          fontSize: 12,
           color,
-          opacity: 0.5,
+          opacity: 1,
           letterSpacing: "0.08em",
         }}
       >
@@ -236,12 +236,12 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Inter, sans-serif",
-          fontSize: 10,
+          fontSize: 12,
           fontWeight: 600,
           letterSpacing: "0.28em",
           textTransform: "uppercase",
           color,
-          opacity: 0.65,
+          opacity: 0.8,
         }}
       >
         {label}
@@ -1094,9 +1094,9 @@ function ServicosSection() {
               <span
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 13,
+                  fontSize: 14,
                   color: c.acento,
-                  opacity: 0.45,
+                  opacity: 0.7,
                   letterSpacing: "0.1em",
                   display: "block",
                   marginBottom: 14,
@@ -1135,7 +1135,7 @@ function ServicosSection() {
                 <span
                   style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 11,
+                    fontSize: 12,
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
                     color: c.acento,
