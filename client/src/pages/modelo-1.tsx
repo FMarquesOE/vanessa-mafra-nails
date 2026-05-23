@@ -881,7 +881,7 @@ function Hero() {
     }}
   >
     <img
-      src="/public/fotos/imagem_001.png"
+      src="/fotos/imagem_001.png"
       alt="Estúdio"
       style={{
         position: "absolute",
