@@ -243,6 +243,7 @@ function SectionLabel({
           textTransform: "uppercase",
           color,
           opacity: 0.8,
+          whiteSpace: "pre-line",
         }}
       >
         {label}
@@ -1208,7 +1209,10 @@ function DepoimentosSection() {
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <ScrollReveal>
-          <SectionLabel numero="III" label="Avaliações de clientes no Google Mapas" />
+          <SectionLabel
+            numero="III"
+            label={"Avaliações de clientes\nno Google Mapas"}
+          />
           <Filete />
         </ScrollReveal>
 
