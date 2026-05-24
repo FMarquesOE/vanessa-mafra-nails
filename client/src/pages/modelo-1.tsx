@@ -21,6 +21,7 @@ const CONFIG = {
   descricaoHero:
     "Espaço especializado em unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e delicadeza se encontram.",
   endereco: "Av. Dr. Manuel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
+  enderecoMaps: "https://www.google.com/maps/search/?api=1&query=Av.+Dr.+Manuel+Teles,+31+Centro,+Duque+de+Caxias+RJ",
   whatsapp: "5521999277505",
   instagram: "@vanessamafra_especialistanails",
   horario: "Segunda a Sábado, 9h às 19h - Somente com horário marcado!",
@@ -1416,17 +1417,36 @@ function ContatoSection() {
                     >
                       {label}
                     </span>
-                    <span
-                      style={{
-                        fontFamily: "DM Sans, Inter, sans-serif",
-                        fontSize: isMobile ? 15 : 16,
-                        color: c.fundo,
-                        opacity: 0.7,
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {valor}
-                    </span>
+                    {label === "Endereço" ? (
+                      <a
+                        href={CONFIG.enderecoMaps}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          fontFamily: "DM Sans, Inter, sans-serif",
+                          fontSize: isMobile ? 15 : 16,
+                          color: c.fundo,
+                          opacity: 0.7,
+                          lineHeight: 1.5,
+                          textDecoration: "underline",
+                          display: "inline-block",
+                        }}
+                      >
+                        {valor}
+                      </a>
+                    ) : (
+                      <span
+                        style={{
+                          fontFamily: "DM Sans, Inter, sans-serif",
+                          fontSize: isMobile ? 15 : 16,
+                          color: c.fundo,
+                          opacity: 0.7,
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {valor}
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>
