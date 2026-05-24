@@ -21,7 +21,7 @@ const CONFIG = {
   descricaoHero:
     "Espaço especializado em unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e delicadeza se encontram.",
   endereco: "Av. Dr. Manuel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
-  enderecoMaps: "https://www.google.com/maps/search/?api=1&query=Av.+Dr.+Manuel+Teles,+31+Centro,+Duque+de+Caxias+RJ",
+  enderecoMaps: "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
   whatsapp: "5521999277505",
   instagram: "@vanessamafra_especialistanails",
   horario: "Segunda a Sábado, 9h às 19h - Somente com horário marcado!",
