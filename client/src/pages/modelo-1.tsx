@@ -355,31 +355,29 @@ function Nav() {
         }}
       >
         {/* Logo */}
-<div style={{ display: "flex", alignItems: "center", gap: isMobile ? 6 : 10 }}>
-  <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60, flexShrink: 0 }}>
-    <img
-      src="/fotos/Logo.png"
-      alt="Logo_Superior"
-      style={{ width: "100%", height: "100%" }}
-    />
-  </div>
-  
-    <span
-      style={{
-        fontFamily: "Cormorant Garamond, serif",
-        fontSize: 14,
-        fontWeight: 550,
-        fontStyle: "italic",
-        color: c.texto,
-        letterSpacing: "0.03em",
-        lineHeight: 1.3, // ← era 4, causava altura excessiva
-        opacity: 0.95,
-        }}
-    >
-      Eleve sua autoestima <br /> cuidando-se como merece!
-    </span>
-</div>
-        
+        <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 6 : 10 }}>
+          <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60, flexShrink: 0 }}>
+            <img
+              src="/fotos/Logo.png"
+              alt="Logo_Superior"
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
+          <span
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontSize: 14,
+              fontWeight: 550,
+              fontStyle: "italic",
+              color: c.texto,
+              letterSpacing: "0.03em",
+              lineHeight: 1.3, // ← era 4, causava altura excessiva
+              opacity: 0.95,
+            }}
+          >
+            Eleve sua autoestima <br /> cuidando-se como merece!
+          </span>
+        </div>
 
         {/* Desktop links */}
         {!isMobile && (
@@ -566,38 +564,46 @@ function Hero() {
         }}
       >
         {/* Imagem no topo no mobile */}
-<div
-  style={{
-    position: "relative",
-    height: "45vw",
-    minHeight: 220,
-    maxHeight: 320,
-    overflow: "visible", // ← era "hidden", clipava o selo
-  }}
->
-  <div
-    style={{
-      position: "absolute",
-      inset: 0,
-      overflow: "hidden", // ← agora só clipa a imagem
-      background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
-    }}
-  >
-    <img
-      src="/fotos/ImgVanessa.png"
-      style={{ width: "100%", height: "100%", objectFit: "cover" }}
-      alt="Topo Mobile"
-    />
-  </div>
+        <div
+          style={{
+            position: "relative",
+            height: "45vw",
+            minHeight: 220,
+            maxHeight: 320,
+            overflow: "visible", // ← era "hidden", clipava o selo
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              overflow: "hidden", // ← agora só clipa a imagem
+              background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
+            }}
+          >
+            <img
+              src="/fotos/ImgVanessa.png"
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              alt="Topo Mobile"
+            />
+          </div>
 
-  {/* Selo fora do overflow hidden */}
-  <div style={{ position: "absolute", bottom: -110, right: 16, zIndex: 10 }}>
-    <RotatingSeal size={100} color={c.acento} />
-  </div>
-</div>
+          {/* Selo fora do overflow hidden */}
+          <div style={{ position: "absolute", bottom: -110, right: 16, zIndex: 10 }}>
+            <RotatingSeal size={100} color={c.acento} />
+          </div>
+        </div>
 
         {/* Texto abaixo */}
-        <div style={{ padding: "48px 24px 60px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div
+          style={{
+            padding: "48px 24px 60px",
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <motion.div
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
@@ -868,47 +874,47 @@ function Hero() {
       </div>
 
       <motion.div style={{ y: imgY, position: "relative", overflow: "visible" }}> {/* ← visible */}
-  <motion.div
-    initial={{ opacity: 0, x: 50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 1.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-    style={{
-      height: "100%",
-      minHeight: "100vh",
-      position: "relative",
-      borderRadius: "48% 0 0 48% / 32% 0 0 32%",
-      overflow: "hidden", // ← clipa só a imagem
-      background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
-    }}
-  >
-    <img
-      src="/fotos/ImgVanessa.png"
-      alt="Estúdio"
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        objectPosition: "center top",
-        display: "block",
-      }}
-    />
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        background: `linear-gradient(to right, ${c.fundo}50, transparent 40%)`,
-        pointerEvents: "none",
-      }}
-    />
-  </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          height: "100%",
+          minHeight: "100vh",
+          position: "relative",
+          borderRadius: "48% 0 0 48% / 32% 0 0 32%",
+          overflow: "hidden", // ← clipa só a imagem
+          background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
+        }}
+      >
+        <img
+          src="/fotos/ImgVanessa.png"
+          alt="Estúdio"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center top",
+            display: "block",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: `linear-gradient(to right, ${c.fundo}50, transparent 40%)`,
+            pointerEvents: "none",
+          }}
+        />
+      </motion.div>
 
-  {/* Selo fora do overflow hidden */}
-  <div style={{ position: "absolute", bottom: 100, left: -80, zIndex: 10 }}>
-    <RotatingSeal size={160} color={c.acento} />
-  </div>
-</motion.div>
+      {/* Selo fora do overflow hidden */}
+      <div style={{ position: "absolute", bottom: 100, left: -80, zIndex: 10 }}>
+        <RotatingSeal size={160} color={c.acento} />
+      </div>
+    </motion.div>
     </section>
   );
 }
@@ -1131,7 +1137,12 @@ function ServicosSection() {
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <div
-                  style={{ height: 1, width: 24, backgroundColor: c.acento, opacity: 0.3 }}
+                  style={{
+                    height: 1,
+                    width: 24,
+                    backgroundColor: c.acento,
+                    opacity: 0.3,
+                  }}
                 />
                 <span
                   style={{
@@ -1501,46 +1512,46 @@ function Footer() {
 
   return (
     <footer
-  style={{
-    backgroundColor: "black",
-    borderTop: `1px solid ${c.fundo}18`,
-    padding: isMobile ? "24px 20px" : "28px 80px",
-    display: "flex",
-    flexDirection: isMobile ? "column" : "row",
-    justifyContent: isMobile ? "center" : "space-between",
-    alignItems: "center",
-    gap: isMobile ? 20 : 0,
-  }}
->
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 3,
-      backgroundColor: "rgba(255, 255, 255, 0.5)", // ← máscara branca
-      borderRadius: 45,                               // ← bordas arredondadas
-      padding: isMobile ? "6px 12px" : "8px 16px",  // ← espaço interno
-    }}
-  >
-    <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60 }}>
-      <img
-        src="/fotos/Logo.png"
-        alt="Logo Inferior"
-        style={{ width: "100%", height: "100%" }}
-      />
-    </div>
-    <span
       style={{
-        fontFamily: "Cormorant Garamond, serif",
-        fontSize: 16,
-        fontStyle: "bold",
-        color: c.texto,  // ← trocado de c.fundo para ficar legível sobre fundo branco
-        lineHeight: 3,
+        backgroundColor: "black",
+        borderTop: `1px solid ${c.fundo}18`,
+        padding: isMobile ? "24px 20px" : "28px 80px",
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        justifyContent: isMobile ? "center" : "space-between",
+        alignItems: "center",
+        gap: isMobile ? 20 : 0,
       }}
     >
-      {CONFIG.nome}
-    </span>
-  </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 3,
+          backgroundColor: "rgba(255, 255, 255, 0.5)", // ← máscara branca
+          borderRadius: 45,                               // ← bordas arredondadas
+          padding: isMobile ? "6px 12px" : "8px 16px",  // ← espaço interno
+        }}
+      >
+        <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60 }}>
+          <img
+            src="/fotos/Logo.png"
+            alt="Logo Inferior"
+            style={{ width: "100%", height: "100%" }}
+          />
+        </div>
+        <span
+          style={{
+            fontFamily: "Cormorant Garamond, serif",
+            fontSize: 16,
+            fontStyle: "bold",
+            color: c.texto,  // ← trocado de c.fundo para ficar legível sobre fundo branco
+            lineHeight: 3,
+          }}
+        >
+          {CONFIG.nome}
+        </span>
+      </div>
 
       <div
         style={{
