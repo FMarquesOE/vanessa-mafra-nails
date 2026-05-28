@@ -1544,8 +1544,8 @@ function Footer() {
             fontSize: 10,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "white",
-            opacity: 0.25,
+            color: "whitesmoke",
+            opacity: 0.8,
             textDecoration: "none",
             transition: "opacity 300ms",
           }}
@@ -1563,8 +1563,8 @@ function Footer() {
             fontSize: 10,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "white",
-            opacity: 0.25,
+            color: "whitesmoke",
+            opacity: 0.8,
             textDecoration: "none",
             transition: "opacity 300ms",
           }}
@@ -1578,8 +1578,8 @@ function Footer() {
             fontFamily: "Inter, sans-serif",
             fontSize: 10,
             letterSpacing: "0.1em",
-            color: "white",
-            opacity: 0.18,
+            color: "whitesmoke",
+            opacity: 0.5,
           }}
         >
           © {CONFIG.anoFundacao} · Todos os direitos reservados
