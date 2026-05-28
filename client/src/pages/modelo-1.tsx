@@ -241,7 +241,7 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Inter, sans-serif",
-          fontSize: 12,
+          fontSize: 18,
           fontWeight: 600,
           letterSpacing: "0.28em",
           textTransform: "uppercase",
