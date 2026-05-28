@@ -1544,7 +1544,7 @@ function Footer() {
             fontSize: 10,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: c.fundo,
+            color: "white",
             opacity: 0.25,
             textDecoration: "none",
             transition: "opacity 300ms",
@@ -1563,7 +1563,7 @@ function Footer() {
             fontSize: 10,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: c.fundo,
+            color: "white",
             opacity: 0.25,
             textDecoration: "none",
             transition: "opacity 300ms",
@@ -1578,7 +1578,7 @@ function Footer() {
             fontFamily: "Inter, sans-serif",
             fontSize: 10,
             letterSpacing: "0.1em",
-            color: c.fundo,
+            color: "white",
             opacity: 0.18,
           }}
         >
