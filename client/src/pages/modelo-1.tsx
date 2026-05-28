@@ -29,9 +29,9 @@ const CONFIG = {
   cores: {
     fundo: "#F7F2EC",
     fundoSecundario: "#b88044e7",
-    acento: "#ad8d6d",
+    acento: "#7a6856",
     acentoClaro: "#e4d5c6",
-    texto: "#3A2E25",
+    texto: "#2e1f13",
     salvia: "#A8B59E",
   },
   servicos: [
