@@ -1397,6 +1397,7 @@ function ContatoSection() {
                           opacity: 0.7,
                           lineHeight: 1.5,
                           display: "inline-block",
+                          whiteSpace: "pre-line",
                         }}
                       >
                         {valor}
@@ -1414,6 +1415,7 @@ function ContatoSection() {
                           lineHeight: 1.5,
                           display: "inline-block",
                           textDecoration: "none",
+                          whiteSpace: "pre-line",
                         }}
                       >
                         {valor}
@@ -1426,6 +1428,7 @@ function ContatoSection() {
                           color: c.fundo,
                           opacity: 0.7,
                           lineHeight: 1.5,
+                          whiteSpace: "pre-line",
                         }}
                       >
                         {valor}
