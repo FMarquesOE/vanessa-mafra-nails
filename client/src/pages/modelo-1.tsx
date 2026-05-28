@@ -24,7 +24,7 @@ const CONFIG = {
   enderecoMaps: "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
   whatsapp: "5521999277505",
   instagram: "@vanessamafra_especialistanails",
-  horario: "Segunda a Sábado, 9h às 19h\nSomente com horário marcado!",
+  horario: "Segunda a Sábado, 9h às 19h.\nSomente com horário marcado!",
   anoFundacao: "2024",
   cores: {
     fundo: "#F7F2EC",
@@ -37,7 +37,7 @@ const CONFIG = {
   servicos: [
     {
       numero: "01",
-      nome: "Primeira aplicação em Gel",
+      nome: "Aplicação em Gel",
       descricao:
         "Alongamento e sobreposta em gel com acabamento naturalista — Força e elegância que duram semanas. Perfeitas, do primeiro ao último dia.",
       duracao: "1h45",
