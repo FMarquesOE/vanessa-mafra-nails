@@ -231,7 +231,7 @@ function SectionLabel({
           fontFamily: "Cormorant Garamond, serif",
           fontSize: 12,
           color,
-          opacity: 1,
+          opacity: 0.8,
           letterSpacing: "0.08em",
         }}
       >
@@ -241,7 +241,7 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Inter, sans-serif",
-          fontSize: 1,
+          fontSize: 12,
           fontWeight: 600,
           letterSpacing: "0.28em",
           textTransform: "uppercase",
