@@ -1107,7 +1107,7 @@ function ServicosSection() {
                 transition: "background-color 400ms",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = `${c.acentoClaro}18`)
+                (e.currentTarget.style.backgroundColor = `${c.acento}18`)
               }
               onMouseLeave={(e) =>
                 (e.currentTarget.style.backgroundColor = c.fundo)
@@ -1116,7 +1116,7 @@ function ServicosSection() {
               <span
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 16,
+                  fontSize: 18,
                   color: c.acento,
                   opacity: 0.7,
                   letterSpacing: "0.1em",
