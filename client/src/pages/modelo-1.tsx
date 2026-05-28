@@ -953,6 +953,7 @@ function SobreSection() {
           {!isMobile && (
             <ScrollReveal>
               <PhotoFrame
+                src="/fotos/OEspaco.png"
                 arch
                 aspectRatio="3/4"
                 label="O Espaço"
