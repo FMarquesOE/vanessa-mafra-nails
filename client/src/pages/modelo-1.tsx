@@ -29,7 +29,7 @@ const CONFIG = {
   cores: {
     fundo: "#F7F2EC",
     fundoSecundario: "#b88044e7",
-    acento: "#614e3b",
+    acento: "#ad8d6d",
     acentoClaro: "#e4d5c6",
     texto: "#3A2E25",
     salvia: "#A8B59E",
