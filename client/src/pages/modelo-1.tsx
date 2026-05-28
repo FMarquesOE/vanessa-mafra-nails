@@ -29,9 +29,9 @@ const CONFIG = {
   cores: {
     fundo: "#F7F2EC",
     fundoSecundario: "#796047",
-    acento: "#695949",
+    acento: "#d8d0c8",
     acentoClaro: "#c7a685",
-    texto: "#2e1f13",
+    texto: "#4e3724",
     salvia: "#A8B59E",
   },
   servicos: [
@@ -1116,7 +1116,7 @@ function ServicosSection() {
               <span
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 14,
+                  fontSize: 16,
                   color: c.acento,
                   opacity: 0.7,
                   letterSpacing: "0.1em",
@@ -1205,8 +1205,8 @@ function ServicosSection() {
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 color: c.texto,
-                opacity: 0.45,
-                textDecoration: "none",
+                opacity: 0.8,
+                textDecoration: "bold",
                 borderBottom: `1px solid ${c.texto}60`,
                 paddingBottom: 3,
                 transition: "opacity 300ms",
