@@ -28,8 +28,8 @@ const CONFIG = {
   anoFundacao: "2024",
   cores: {
     fundo: "#F7F2EC",
-    fundoSecundario: "#a78968d5",
-    acento: "#9B7B5B",
+    fundoSecundario: "#b88044e7",
+    acento: "#614e3b",
     acentoClaro: "#C9A98A",
     texto: "#3A2E25",
     salvia: "#A8B59E",
@@ -41,6 +41,8 @@ const CONFIG = {
       descricao:
         "Alongamento e sobreposta em gel com acabamento naturalista — Força e elegância que duram semanas. Perfeitas, do primeiro ao último dia.",
       duracao: "2h00",
+      src: "/fotos/UnhasGel.jpeg",
+      aspectRatio: "4/5",
     },
     {
       numero: "02",
@@ -48,6 +50,8 @@ const CONFIG = {
       descricao:
         "O brilho que transforma qualquer esmalte. Cor intensa, acabamento impecável, durabilidade real",
       duracao: "1h30",
+      src: "/fotos/BanhoGel.jpeg",
+      aspectRatio: "4/5",
     },
     {
       numero: "03",
@@ -55,6 +59,8 @@ const CONFIG = {
       descricao:
         "Proteção invisível, unhas inabaláveis. Para quem não abre mão de unhas perfeitas — nem no dia a dia mais intenso.",
       duracao: "1h00",
+      src: "/fotos/Blindagem.jpeg",
+      aspectRatio: "4/5",
     },
     {
       numero: "04",
@@ -62,6 +68,8 @@ const CONFIG = {
       descricao:
         "O clássico que nunca sai de moda. Cuidado completo, acabamento bonito e aquela sensação gostosa de mãos e pés em dia.",
       duracao: "00h50",
+      src: "/fotos/MPTradicional.jpeg",
+      aspectRatio: "3/4",
     },
     {
       numero: "05",
@@ -69,6 +77,8 @@ const CONFIG = {
       descricao:
         "Uma pausa de luxo para os seus pés. Esfoliação, hidratação profunda e muito relaxamento — porque seus pés merecem esse mimo.",
       duracao: "2h00",
+      src: "/fotos/SPA.jpeg",
+      aspectRatio: "3/4",
     },
     {
       numero: "06",
@@ -76,6 +86,8 @@ const CONFIG = {
       descricao:
         "Tratamento estético avançado que transforma a aparência dos pés. Combate calosidades, rachaduras e promove uma renovação completa — para pés que parecem renascidos.",
       duracao: "2h00",
+      src: "/fotos/Plastica.jpeg",
+      aspectRatio: "3/4",
     },
   ],
   depoimentos: [
@@ -94,14 +106,6 @@ const CONFIG = {
       texto:
         "Vanessa como sempre muito agradável de uma simpatia ímpar, ótimo atendimento e um serviço de excelência.",
     },
-  ],
-  galeria: [
-    { label: "Unhas em Gel", src: "/fotos/UnhasGel.jpeg" },
-    { label: "Banho de Gel", src: "/fotos/BanhoGel.jpeg" },
-    { label: "Blindagem", src: "/fotos/Blindagem.jpeg" },
-    { label: "Mão e Pé Tradicional", src: "/fotos/MPTradicional.jpeg" },
-    { label: "SPA dos Pés", src: "/fotos/SPA.jpeg" },
-    { label: "Plástica dos Pés", src: "/fotos/Plastica.jpeg" },
   ],
 };
 
@@ -332,7 +336,6 @@ function Nav() {
   const navLinks = [
     { label: "Serviços", href: "#servicos" },
     { label: "Sobre", href: "#sobre" },
-    { label: "Galeria", href: "#galeria" },
     { label: "Contato", href: "#contato" },
   ];
 
@@ -1057,6 +1060,15 @@ function ServicosSection() {
   const c = CONFIG.cores;
   const isMobile = useIsMobile();
 
+  const gradients = [
+    `linear-gradient(145deg, ${c.fundoSecundario}, ${c.acentoClaro}65)`,
+    `linear-gradient(145deg, ${c.salvia}55, ${c.fundoSecundario})`,
+    `linear-gradient(145deg, ${c.acentoClaro}45, ${c.salvia}35)`,
+    `linear-gradient(145deg, ${c.fundoSecundario}, ${c.salvia}65)`,
+    `linear-gradient(145deg, ${c.acentoClaro}55, ${c.fundoSecundario})`,
+    `linear-gradient(145deg, ${c.salvia}35, ${c.acentoClaro}55)`,
+  ];
+
   return (
     <section
       id="servicos"
@@ -1083,7 +1095,7 @@ function ServicosSection() {
             marginTop: isMobile ? 40 : 64,
           }}
         >
-          {CONFIG.servicos.map((s) => (
+          {CONFIG.servicos.map((s, index) => (
             <motion.div
               key={s.numero}
               variants={vFadeUp}
@@ -1160,6 +1172,17 @@ function ServicosSection() {
                   {s.duracao}
                 </span>
               </div>
+              {s.src && (
+                <div style={{ marginTop: 28, maxHeight: isMobile ? undefined : 360 }}>
+                  <PhotoFrame
+                    src={s.src}
+                    alt={s.nome}
+                    label={s.nome}
+                    aspectRatio={isMobile ? "1/1" : s.aspectRatio ?? "4/3"}
+                    gradientFallback={gradients[index]}
+                  />
+                </div>
+              )}
             </motion.div>
           ))}
         </motion.div>
@@ -1289,84 +1312,6 @@ function DepoimentosSection() {
 }
 
 // =============================================================================
-// GALERIA
-// =============================================================================
-function GaleriaSection() {
-  const c = CONFIG.cores;
-  const isMobile = useIsMobile();
-
-  const gradients = [
-    `linear-gradient(145deg, ${c.fundoSecundario}, ${c.acentoClaro}65)`,
-    `linear-gradient(145deg, ${c.salvia}55, ${c.fundoSecundario})`,
-    `linear-gradient(145deg, ${c.acentoClaro}45, ${c.salvia}35)`,
-    `linear-gradient(145deg, ${c.fundoSecundario}, ${c.salvia}65)`,
-    `linear-gradient(145deg, ${c.acentoClaro}55, ${c.fundoSecundario})`,
-    `linear-gradient(145deg, ${c.salvia}35, ${c.acentoClaro}55)`,
-  ];
-
-  return (
-    <section
-      id="galeria"
-      style={{
-        backgroundColor: c.fundoSecundario,
-        padding: isMobile ? "72px 24px" : "120px 80px",
-      }}
-    >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <ScrollReveal>
-          <SectionLabel numero="IV" label="Galeria" />
-          <Filete />
-        </ScrollReveal>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr 1fr" : "repeat(3, 1fr)",
-            gap: isMobile ? 10 : 16,
-            marginTop: isMobile ? 40 : 64,
-          }}
-        >
-          {CONFIG.galeria.map((item, i) => (
-            <ScrollReveal key={i} delay={i * 0.06}>
-              <PhotoFrame
-                src={item.src}
-                label={item.label}
-                aspectRatio={isMobile ? "1/1" : (i % 3 === 1 ? "3/4" : "1/1")}
-                gradientFallback={gradients[i]}
-              />
-            </ScrollReveal>
-          ))}
-        </div>
-
-        <ScrollReveal>
-          <div style={{ textAlign: "center", marginTop: isMobile ? 32 : 44 }}>
-            <a
-              href={`https://instagram.com/${CONFIG.instagram.replace("@", "")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontSize: 11,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: c.texto,
-                opacity: 0.4,
-                textDecoration: "none",
-                transition: "opacity 300ms",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.4")}
-            >
-              Ver mais no Instagram {CONFIG.instagram} →
-            </a>
-          </div>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-// =============================================================================
 // CONTATO
 // =============================================================================
 function ContatoSection() {
@@ -1392,7 +1337,7 @@ function ContatoSection() {
         >
           <div>
             <ScrollReveal>
-              <SectionLabel numero="V" label="Localização & Contato" color={c.acentoClaro} />
+              <SectionLabel numero="IV" label="Localização & Contato" color={c.acentoClaro} />
             </ScrollReveal>
 
             <ScrollReveal delay={0.05}>
@@ -1650,7 +1595,6 @@ export default function Modelo1() {
       <SobreSection />
       <ServicosSection />
       <DepoimentosSection />
-      <GaleriaSection />
       <ContatoSection />
       <Footer />
     </div>
