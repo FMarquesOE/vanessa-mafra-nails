@@ -1,10 +1,10 @@
 /**
  * ============================================================================
- * MODELO 1 — "Quiet Luxury Botânico" (Editorial Naturalista)
+ * MODELO — "Quiet Luxury Botânico" 
  * Vanessa Mafra · Especialista em Unhas
  * ============================================================================
  * VERSÃO MOBILE-RESPONSIVE
- * Usa useIsMobile() do projeto para adaptar layout entre desktop e mobile.
+ * Projeto que adapta layout entre desktop e mobile.
  */
 import { motion, useInView, useScroll, useTransform, Variants } from "framer-motion";
 import { useRef, useState } from "react";
@@ -229,9 +229,8 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Cormorant Garamond, serif",
-          fontSize: 12,
-          color,
-          opacity: 0.8,
+          fontSize: 10,
+          opacity: 0.9,
           letterSpacing: "0.08em",
         }}
       >
@@ -241,11 +240,10 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Inter, sans-serif",
-          fontSize: 20,
+          fontSize: 12,
           fontWeight: 600,
           letterSpacing: "0.28em",
           textTransform: "uppercase",
-          color,
           opacity: 0.8,
           whiteSpace: "pre-line",
         }}
@@ -402,7 +400,7 @@ function Nav() {
                   transition: "opacity 300ms",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.55")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.75")}
               >
                 {label}
               </a>
@@ -1240,10 +1238,7 @@ function DepoimentosSection() {
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <ScrollReveal>
-          <SectionLabel
-            numero="III"
-            label={"Avaliações de clientes\nno Google Mapas"}
-          />
+          <SectionLabel numero="III" label={"Avaliações de clientes\nno Google Mapas"} />
           <Filete />
         </ScrollReveal>
 
