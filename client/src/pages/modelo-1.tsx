@@ -37,10 +37,10 @@ const CONFIG = {
   servicos: [
     {
       numero: "01",
-      nome: "Unhas em Gel",
+      nome: "Primeira aplicação em Gel",
       descricao:
         "Alongamento e sobreposta em gel com acabamento naturalista — Força e elegância que duram semanas. Perfeitas, do primeiro ao último dia.",
-      duracao: "2h00",
+      duracao: "1h45",
       src: "/fotos/UnhasGel.jpeg",
       aspectRatio: "4/3",
     },
@@ -67,7 +67,7 @@ const CONFIG = {
       nome: "Mão e Pé Tradicional",
       descricao:
         "O clássico que nunca sai de moda. Cuidado completo, acabamento bonito e aquela sensação gostosa de mãos e pés em dia.",
-      duracao: "00h50",
+      duracao: "01h30",
       src: "/fotos/MPTradicional.jpeg",
       aspectRatio: "4/3",
     },
@@ -76,7 +76,7 @@ const CONFIG = {
       nome: "SPA dos Pés",
       descricao:
         "Uma pausa de luxo para os seus pés. Esfoliação, hidratação profunda e muito relaxamento — porque seus pés merecem esse mimo.",
-      duracao: "2h00",
+      duracao: "1h30",
       src: "/fotos/SPA.jpeg",
       aspectRatio: "4/3",
     },
@@ -85,7 +85,7 @@ const CONFIG = {
       nome: "Plástica dos Pés",
       descricao:
         "Tratamento estético avançado que transforma a aparência dos pés. Combate calosidades, rachaduras e promove uma renovação completa — para pés que parecem renascidos.",
-      duracao: "2h00",
+      duracao: "1h30",
       src: "/fotos/Plastica.jpeg",
       aspectRatio: "4/3",
     },
