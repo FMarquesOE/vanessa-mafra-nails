@@ -28,9 +28,9 @@ const CONFIG = {
   anoFundacao: "2024",
   cores: {
     fundo: "#F7F2EC",
-    fundoSecundario: "#b88044e7",
-    acento: "#7a6856",
-    acentoClaro: "#e4d5c6",
+    fundoSecundario: "#796047",
+    acento: "#695949",
+    acentoClaro: "#c7a685",
     texto: "#2e1f13",
     salvia: "#A8B59E",
   },
@@ -241,7 +241,7 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Inter, sans-serif",
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 600,
           letterSpacing: "0.28em",
           textTransform: "uppercase",
