@@ -1445,8 +1445,24 @@ function ContatoSection() {
                           color: c.fundo,
                           opacity: 0.7,
                           lineHeight: 1.5,
-                          textDecoration: "underline",
                           display: "inline-block",
+                        }}
+                      >
+                        {valor}
+                      </a>
+                    ) : label === "Instagram" ? (
+                      <a
+                        href={`https://instagram.com/${CONFIG.instagram.replace("@", "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          fontFamily: "DM Sans, Inter, sans-serif",
+                          fontSize: isMobile ? 15 : 16,
+                          color: c.fundo,
+                          opacity: 0.7,
+                          lineHeight: 1.5,
+                          display: "inline-block",
+                          textDecoration: "none",
                         }}
                       >
                         {valor}
