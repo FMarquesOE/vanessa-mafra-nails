@@ -953,9 +953,10 @@ function SobreSection() {
           {!isMobile && (
             <ScrollReveal>
               <PhotoFrame
+                src="/fotos/OEspaco.png"
                 arch
                 aspectRatio="3/4"
-                {label="O Espaço", src="/fotos/OEspaco.png"}
+                label="O Espaço"
                 gradientFallback={`linear-gradient(145deg, ${c.fundoSecundario}, ${c.salvia}60)`}
               />
             </ScrollReveal>
