@@ -42,7 +42,7 @@ const CONFIG = {
         "Alongamento e sobreposta em gel com acabamento naturalista — Força e elegância que duram semanas. Perfeitas, do primeiro ao último dia.",
       duracao: "2h00",
       src: "/fotos/UnhasGel.jpeg",
-      aspectRatio: "4/5",
+      aspectRatio: "4/3",
     },
     {
       numero: "02",
@@ -51,7 +51,7 @@ const CONFIG = {
         "O brilho que transforma qualquer esmalte. Cor intensa, acabamento impecável, durabilidade real",
       duracao: "1h30",
       src: "/fotos/BanhoGel.jpeg",
-      aspectRatio: "4/5",
+      aspectRatio: "4/3",
     },
     {
       numero: "03",
@@ -60,7 +60,7 @@ const CONFIG = {
         "Proteção invisível, unhas inabaláveis. Para quem não abre mão de unhas perfeitas — nem no dia a dia mais intenso.",
       duracao: "1h00",
       src: "/fotos/Blindagem.jpeg",
-      aspectRatio: "4/5",
+      aspectRatio: "4/3",
     },
     {
       numero: "04",
@@ -69,7 +69,7 @@ const CONFIG = {
         "O clássico que nunca sai de moda. Cuidado completo, acabamento bonito e aquela sensação gostosa de mãos e pés em dia.",
       duracao: "00h50",
       src: "/fotos/MPTradicional.jpeg",
-      aspectRatio: "3/4",
+      aspectRatio: "4/3",
     },
     {
       numero: "05",
@@ -78,7 +78,7 @@ const CONFIG = {
         "Uma pausa de luxo para os seus pés. Esfoliação, hidratação profunda e muito relaxamento — porque seus pés merecem esse mimo.",
       duracao: "2h00",
       src: "/fotos/SPA.jpeg",
-      aspectRatio: "3/4",
+      aspectRatio: "4/3",
     },
     {
       numero: "06",
@@ -87,7 +87,7 @@ const CONFIG = {
         "Tratamento estético avançado que transforma a aparência dos pés. Combate calosidades, rachaduras e promove uma renovação completa — para pés que parecem renascidos.",
       duracao: "2h00",
       src: "/fotos/Plastica.jpeg",
-      aspectRatio: "3/4",
+      aspectRatio: "4/3",
     },
   ],
   depoimentos: [
@@ -1173,7 +1173,13 @@ function ServicosSection() {
                 </span>
               </div>
               {s.src && (
-                <div style={{ marginTop: 28, maxHeight: isMobile ? undefined : 360 }}>
+                <div
+                  style={{
+                    marginTop: 28,
+                    maxHeight: isMobile ? undefined : 260,
+                    overflow: "hidden",
+                  }}
+                >
                   <PhotoFrame
                     src={s.src}
                     alt={s.nome}
