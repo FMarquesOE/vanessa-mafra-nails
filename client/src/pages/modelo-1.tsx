@@ -1105,7 +1105,7 @@ function ServicosSection() {
                 transition: "background-color 400ms",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = `${c.acento}18`)
+                (e.currentTarget.style.backgroundColor = c.acentoClaro)
               }
               onMouseLeave={(e) =>
                 (e.currentTarget.style.backgroundColor = c.fundo)
