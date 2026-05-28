@@ -229,7 +229,7 @@ function SectionLabel({
       <span
         style={{
           fontFamily: "Cormorant Garamond, serif",
-          fontSize: 14,
+          fontSize: 12,
           color,
           opacity: 1,
           letterSpacing: "0.08em",
