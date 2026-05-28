@@ -1116,8 +1116,8 @@ function ServicosSection() {
               <span
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
-                  fontSize: 18,
-                  color: c.acento,
+                  fontSize: 16,
+                  color: c.texto,
                   opacity: 0.7,
                   letterSpacing: "0.1em",
                   display: "block",
@@ -1155,7 +1155,7 @@ function ServicosSection() {
                   style={{
                     height: 1,
                     width: 24,
-                    backgroundColor: c.acento,
+                    backgroundColor: c.texto,
                     opacity: 0.3,
                   }}
                 />
@@ -1166,7 +1166,7 @@ function ServicosSection() {
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
                     color: c.acento,
-                    opacity: 0.55,
+                    opacity: 0.65,
                   }}
                 >
                   {s.duracao}
@@ -1206,14 +1206,14 @@ function ServicosSection() {
                 textTransform: "uppercase",
                 color: c.texto,
                 opacity: 0.8,
-                textDecoration: "bold",
+                textDecoration: "negrito",
                 borderBottom: `1px solid ${c.texto}60`,
                 paddingBottom: 3,
                 transition: "opacity 300ms",
                 display: "inline-block",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.45")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.8")}
             >
               Consultar disponibilidade via WhatsApp →
             </a>
