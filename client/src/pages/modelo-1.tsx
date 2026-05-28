@@ -28,7 +28,7 @@ const CONFIG = {
   anoFundacao: "2024",
   cores: {
     fundo: "#F7F2EC",
-    fundoSecundario: "#EFE6DC",
+    fundoSecundario: "#a78968d5",
     acento: "#9B7B5B",
     acentoClaro: "#C9A98A",
     texto: "#3A2E25",
