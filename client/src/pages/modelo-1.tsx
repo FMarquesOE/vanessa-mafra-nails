@@ -947,20 +947,21 @@ function SobreSection() {
             gap: isMobile ? 40 : 80,
             marginTop: isMobile ? 56 : 88,
             alignItems: "center",
+            justifyItems: isMobile ? "center" : "stretch",
           }}
         >
-          {/* Foto em arco — escondida no mobile para leveza */}
-          {!isMobile && (
-            <ScrollReveal>
+          {/* Foto em arco — também visível no mobile */}
+          <ScrollReveal>
+            <div style={{ width: "100%", maxWidth: isMobile ? 360 : undefined }}>
               <PhotoFrame
                 src="/fotos/OEspaco.png"
                 arch
-                aspectRatio="3/4"
+                aspectRatio={isMobile ? "4/5" : "3/4"}
                 label="O Espaço"
                 gradientFallback={`linear-gradient(145deg, ${c.fundoSecundario}, ${c.salvia}60)`}
               />
-            </ScrollReveal>
-          )}
+            </div>
+          </ScrollReveal>
 
           <div>
             <ScrollReveal>
