@@ -24,7 +24,7 @@ const CONFIG = {
   enderecoMaps: "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
   whatsapp: "5521999277505",
   instagram: "@vanessamafra_especialistanails",
-  horario: "Segunda a Sábado, 9h às 19h.\nSomente com horário marcado!",
+  horario: "Segunda/Terça/Quinta/Sexta, 9h às 19h - Sábado, 9h às 14h.\nSomente com horário marcado!",
   anoFundacao: "2024",
   cores: {
     fundo: "#F7F2EC",
