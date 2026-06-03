@@ -264,6 +264,7 @@ function PhotoFrame({
   aspectRatio = "4/5",
   gradientFallback,
   label,
+  hoverLayer = false,
 }: {
   src?: string;
   alt?: string;
@@ -271,13 +272,19 @@ function PhotoFrame({
   aspectRatio?: string;
   gradientFallback?: string;
   label?: string;
+  hoverLayer?: boolean;
 }) {
   const c = CONFIG.cores;
+  const [isHovered, setIsHovered] = useState(false);
   const borderRadius = arch ? "50% 50% 0 0 / 42% 42% 0 0" : "6px";
+
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      initial={false}
+      whileHover={hoverLayer ? { scale: 1.04 } : { scale: 1.02 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       style={{
         aspectRatio,
         borderRadius,
@@ -286,14 +293,22 @@ function PhotoFrame({
         background:
           gradientFallback ||
           `linear-gradient(145deg, ${c.fundoSecundario}, ${c.acentoClaro}55)`,
-        cursor: "default",
+        cursor: src ? (hoverLayer ? "pointer" : "default") : "default",
+        boxShadow: hoverLayer && isHovered ? "0 20px 40px rgba(0, 0, 0, 0.12)" : undefined,
       }}
     >
       {src ? (
         <img
           src={src}
           alt={alt || label || ""}
-          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: hoverLayer && isHovered ? "contain" : "cover",
+            objectPosition: "center",
+            display: "block",
+            transition: "object-fit 200ms ease, transform 200ms ease",
+          }}
         />
       ) : (
         <div
@@ -1184,6 +1199,7 @@ function ServicosSection() {
                     label={s.nome}
                     aspectRatio={isMobile ? "1/1" : s.aspectRatio ?? "4/3"}
                     gradientFallback={gradients[index]}
+                    hoverLayer={!isMobile}
                   />
                 </div>
               )}
