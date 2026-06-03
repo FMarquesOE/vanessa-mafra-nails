@@ -1189,7 +1189,7 @@ function ServicosSection() {
                 <div
                   style={{
                     marginTop: 28,
-                    maxHeight: isMobile ? undefined : 350,
+                    maxHeight: isMobile ? undefined : 480,
                     overflow: "hidden",
                   }}
                 >
