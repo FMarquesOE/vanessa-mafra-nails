@@ -281,7 +281,7 @@ function PhotoFrame({
   return (
     <motion.div
       initial={false}
-      whileHover={hoverLayer ? { scale: 1.04 } : { scale: 1.02 }}
+      whileHover={hoverLayer ? { scale: 1.01 } : { scale: 1.02 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -293,7 +293,7 @@ function PhotoFrame({
         background:
           gradientFallback ||
           `linear-gradient(145deg, ${c.fundoSecundario}, ${c.acentoClaro}55)`,
-        cursor: src ? (hoverLayer ? "pointer" : "default") : "default",
+        cursor: src && hoverLayer ? "pointer" : "default",
         boxShadow: hoverLayer && isHovered ? "0 20px 40px rgba(0, 0, 0, 0.12)" : undefined,
       }}
     >
@@ -307,7 +307,7 @@ function PhotoFrame({
             objectFit: hoverLayer && isHovered ? "contain" : "cover",
             objectPosition: "center",
             display: "block",
-            transition: "object-fit 200ms ease, transform 200ms ease",
+            transition: "object-fit 250ms ease, transform 250ms ease",
           }}
         />
       ) : (
@@ -1189,7 +1189,7 @@ function ServicosSection() {
                 <div
                   style={{
                     marginTop: 28,
-                    maxHeight: isMobile ? undefined : 260,
+                    maxHeight: isMobile ? undefined : 350,
                     overflow: "hidden",
                   }}
                 >
