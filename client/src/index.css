@@ -186,3 +186,20 @@
   border-top-right-radius: 50% 35%;
   overflow: hidden;
 }
+
+/* Serviços: background-image card */
+.servico-bg {
+  border-radius: 6px;
+  overflow: hidden;
+  display: block;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (hover: hover) {
+  .servico-bg:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+}

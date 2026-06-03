@@ -1193,13 +1193,14 @@ function ServicosSection() {
                     overflow: "hidden",
                   }}
                 >
-                  <PhotoFrame
-                    src={s.src}
-                    alt={s.nome}
-                    label={s.nome}
-                    aspectRatio={isMobile ? "1/1" : s.aspectRatio ?? "4/3"}
-                    gradientFallback={gradients[index]}
-                    hoverLayer={!isMobile}
+                  <div
+                    className="servico-bg"
+                    role="img"
+                    aria-label={s.nome}
+                    style={{
+                      aspectRatio: isMobile ? "1/1" : s.aspectRatio ?? "4/3",
+                      backgroundImage: `url(${s.src})`,
+                    }}
                   />
                 </div>
               )}
