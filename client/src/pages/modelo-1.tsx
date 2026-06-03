@@ -20,7 +20,7 @@ const CONFIG = {
   slogan: "Sofisticação com Naturalidade",
   descricaoHero:
     "Espaço especializado em unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e delicadeza se encontram.",
-  endereco: "Condomínio e Edifício Palácio Manon\nAv. Dr. Manuel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
+  endereco: "Condomínio e Palácio Manom\nAv. Dr. Manuel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
   enderecoMaps: "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
   whatsapp: "5521999277505",
   instagram: "@vanessamafra_especialistanails",
@@ -879,7 +879,6 @@ function Hero() {
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
-        whileHover={!isMobile ? { scale: 1.02 } : undefined}
         transition={{ duration: 1.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         style={{
           height: "100%",
@@ -888,15 +887,11 @@ function Hero() {
           borderRadius: "48% 0 0 48% / 32% 0 0 32%",
           overflow: "hidden", // ← clipa só a imagem
           background: `linear-gradient(160deg, ${c.fundoSecundario} 0%, ${c.acentoClaro}70 45%, ${c.salvia}50 100%)`,
-          transformOrigin: "center right",
-          cursor: !isMobile ? "pointer" : "auto",
         }}
       >
-        <motion.img
+        <img
           src="/fotos/ImgVanessa.png"
           alt="Estúdio"
-          whileHover={!isMobile ? { scale: 1.06 } : undefined}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: "absolute",
             inset: 0,
