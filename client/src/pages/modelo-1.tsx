@@ -995,7 +995,7 @@ function SobreSection() {
 
           <div>
             <ScrollReveal>
-              <SectionLabel numero="I" label="Sobre o Espaço" color={c.fundo} />
+              <SectionLabel numero="I" label="Sobre o Espaço" color={c.texto} />
             </ScrollReveal>
 
             <ScrollReveal delay={0.05}>
