@@ -1219,7 +1219,7 @@ function ServicosSection() {
                 fontSize: 12,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: c.texto,
+                color: c.fundo,
                 opacity: 0.8,
                 textDecoration: "negrito",
                 borderBottom: `1px solid ${c.texto}60`,
