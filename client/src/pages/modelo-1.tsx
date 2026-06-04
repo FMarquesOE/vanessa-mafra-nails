@@ -1092,7 +1092,7 @@ function ServicosSection() {
     >
       <div style={{ maxWidth: 1200, margin: "auto" }}>
         <ScrollReveal>
-          <SectionLabel numero="II" label="Serviços" />
+          <SectionLabel numero="II" label="Serviços" color={c.fundo}/>
           <Filete />
         </ScrollReveal>
 
@@ -1355,7 +1355,7 @@ function ContatoSection() {
         >
           <div>
             <ScrollReveal>
-              <SectionLabel numero="IV" label="Localização & Contato" color={c.acentoClaro} />
+              <SectionLabel numero="IV" label="Localização & Contato" color={c.fundo} />
             </ScrollReveal>
 
             <ScrollReveal delay={0.05}>
