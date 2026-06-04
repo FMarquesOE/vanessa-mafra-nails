@@ -212,11 +212,18 @@ function SectionLabel({
   numero,
   label,
   color = CONFIG.cores.acento,
+  numeroColor,
+  labelColor,
 }: {
   numero: string;
   label: string;
   color?: string;
+  numeroColor?: string;
+  labelColor?: string;
 }) {
+  const numberColor = numeroColor ?? color;
+  const titleColor = labelColor ?? color;
+
   return (
     <div
       style={{
@@ -232,11 +239,17 @@ function SectionLabel({
           fontSize: 10,
           opacity: 0.9,
           letterSpacing: "0.08em",
+          color: numberColor,
         }}
       >
         {numero}
       </span>
-      <div style={{ height: 1, width: 40, backgroundColor: color, opacity: 0.3 }} />
+      <div style={{
+        height: 1,
+        width: 40,
+        backgroundColor: color,
+        opacity: 0.3,
+      }} />
       <span
         style={{
           fontFamily: "Inter, sans-serif",
@@ -246,6 +259,7 @@ function SectionLabel({
           textTransform: "uppercase",
           opacity: 0.8,
           whiteSpace: "pre-line",
+          color: titleColor,
         }}
       >
         {label}
@@ -981,7 +995,7 @@ function SobreSection() {
 
           <div>
             <ScrollReveal>
-              <SectionLabel numero="I" label="Sobre o Espaço" />
+              <SectionLabel numero="I" label="Sobre o Espaço" color={c.fundo} />
             </ScrollReveal>
 
             <ScrollReveal delay={0.05}>
@@ -1092,7 +1106,7 @@ function ServicosSection() {
     >
       <div style={{ maxWidth: 1200, margin: "auto" }}>
         <ScrollReveal>
-          <SectionLabel numero="II" label="Serviços" color={c.fundo}/>
+          <SectionLabel numero="II" label="Serviços" color={c.fundo} />
           <Filete />
         </ScrollReveal>
 
