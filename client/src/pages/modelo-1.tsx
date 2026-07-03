@@ -1559,7 +1559,7 @@ function Footer() {
           <a href="https://wa.me/5521976822900?text=Ol%C3%A1%20FMarques%20TechSolu%C3%A7%C3%B5es!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20empresa." 
           target="_blank" 
           rel="noopener noreferrer" 
-          style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}> FMarques TechSoluções</a>!
+          style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}> FMarques TechSoluções</a>.
         </span>
       </div>
     </footer>
