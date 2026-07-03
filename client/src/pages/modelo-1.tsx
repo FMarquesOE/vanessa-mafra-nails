@@ -1553,63 +1553,7 @@ function Footer() {
           {CONFIG.nome}
         </span>
       </div>
-
-      <div
-        style={{
-          display: "flex",
-          gap: isMobile ? 20 : 32,
-          alignItems: "center",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        <a
-          href={`https://instagram.com/${CONFIG.instagram.replace("@", "")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: 10,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "whitesmoke",
-            opacity: 0.8,
-            textDecoration: "none",
-            transition: "opacity 300ms",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.25")}
-        >
-          Instagram
-        </a>
-        <a
-          href={`https://wa.me/${CONFIG.whatsapp}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: 10,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "whitesmoke",
-            opacity: 0.8,
-            textDecoration: "none",
-            transition: "opacity 300ms",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.25")}
-        >
-          WhatsApp
-        </a>
-        <span
-          style={{
-            fontFamily: "Inter, sans-serif",
-            fontSize: 10,
-            letterSpacing: "0.1em",
-            color: "whitesmoke",
-            opacity: 0.5,
-          }}
-        >
+        <br />
           © {CONFIG.anoFundacao} · Todos os direitos reservados<br />
           Construção do site por 
           <a href="https://wa.me/5521976822900?text=Ol%C3%A1%20FMarques%20TechSolu%C3%A7%C3%B5es!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20empresa." 
