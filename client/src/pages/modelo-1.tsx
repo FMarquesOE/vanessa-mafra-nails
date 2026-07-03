@@ -24,7 +24,7 @@ const CONFIG = {
   whatsapp: "5521999277505?text=Ol%C3%A1%20Vanessa%20Mafra!%20O%20Espa%C3%A7o%20%C3%A9%20maravilhoso%2C%20como%20fa%C3%A7o%20pra%20marcar%20um%20hor%C3%A1rio%20com%20voc%C3%AA%3F",
   instagram: "@vanessamafra_especialistanails",
   horario: "Segunda - Sexta: 9h às 19h.\nSábado: 9h às 14h.\nSomente com horário marcado!",
-  anoFundacao: "2024",
+  anoFundacao: "2023",
   cores: {
     fundo: "#F7F2EC",
     fundoSecundario: "#796047",
@@ -1615,7 +1615,7 @@ function Footer() {
           <a href="https://wa.me/5521976822900?text=Ol%C3%A1%20FMarques%20TechSolu%C3%A7%C3%B5es!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20empresa." 
           target="_blank" 
           rel="noopener noreferrer" 
-          style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}>FMarques TechSoluções</a>
+          style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}> FMarques TechSoluções</a>!
         </span>
       </div>
     </footer>
