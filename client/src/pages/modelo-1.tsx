@@ -22,7 +22,7 @@ const CONFIG = {
     "Espaço especializado em unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e delicadeza se encontram.",
   endereco: "Condomínio e Palácio Manom\nAv. Dr. Manuel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
   enderecoMaps: "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
-  whatsapp: "5521999277505",
+  whatsapp: "5521999277505?text=Ol%C3%A1%20Vanessa%20Mafra!%20O%20Espa%C3%A7o%20%C3%A9%20maravilhoso%2C%20como%20fa%C3%A7o%20pra%20marcar%20um%20hor%C3%A1rio%20com%20voc%C3%AA%3F",
   instagram: "@vanessamafra_especialistanails",
   horario: "Segunda - Sexta: 9h às 19h.\nSábado: 9h às 14h.\nSomente com horário marcado!",
   anoFundacao: "2024",
@@ -1612,6 +1612,11 @@ function Footer() {
           }}
         >
           © {CONFIG.anoFundacao} · Todos os direitos reservados
+          Construção do site por 
+          <a href="https://wa.me/5521976822900?text=Ol%C3%A1%20FMarques%20TechSolu%C3%A7%C3%B5es!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20empresa." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          style={{ color: c.acento, textDecoration: "none" }}>FMarques TechSoluções</a>
         </span>
       </div>
     </footer>
