@@ -406,7 +406,7 @@ useEffect(() => {
           <span
             style={{
               fontFamily: "Cormorant Garamond, serif",
-              fontSize: 1,
+              fontSize: 12,
               fontWeight: 550,
               fontStyle: "italic",
               color: c.texto,
