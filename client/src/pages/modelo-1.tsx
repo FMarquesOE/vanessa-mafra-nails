@@ -6,7 +6,7 @@
  * Projeto que adapta layout entre desktop e mobile.
  */
 import { motion, useInView, useScroll, useTransform, Variants } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/useMobile";
 import { AlignCenter } from "lucide-react";
 import { Analytics } from "@vercel/analytics/next";
@@ -358,6 +358,16 @@ function Nav() {
   const c = CONFIG.cores;
   const isMobile = useIsMobile();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+useEffect(() => {
+  if (!isOpen) return;
+
+  const handleScroll = () => setIsOpen(false);
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [isOpen]);
 
   const navLinks = [
     { label: "Serviços", href: "#servicos" },
@@ -396,7 +406,7 @@ function Nav() {
           <span
             style={{
               fontFamily: "Cormorant Garamond, serif",
-              fontSize: 10,
+              fontSize: 1,
               fontWeight: 550,
               fontStyle: "italic",
               color: c.texto,
