@@ -396,7 +396,7 @@ function Nav() {
           <span
             style={{
               fontFamily: "Cormorant Garamond, serif",
-              fontSize: 14,
+              fontSize: 10,
               fontWeight: 550,
               fontStyle: "italic",
               color: c.texto,
@@ -405,7 +405,7 @@ function Nav() {
               opacity: 0.95,
             }}
           >
-            Eleve sua autoestima <br /> cuidando-se como merece!
+            Eleve sua autoestima cuidando-se como merece!
           </span>
         </div>
 
