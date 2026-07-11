@@ -794,7 +794,7 @@ function Footer() {
       >
         <div>© {CONFIG.anoFundacao} · Todos os direitos reservados</div>
         <div>
-          Construção do site por{" "}
+          Administrado por{" "}
           <a
             href="https://wa.me/5521976822900?text=Ol%C3%A1%20FMarques%20TechSolu%C3%A7%C3%B5es!%20Quero%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20empresa."
             target="_blank"
@@ -803,6 +803,7 @@ function Footer() {
           >
             FMarques TechSoluções
           </a>
+          .
         </div>
       </div>
     </footer>
