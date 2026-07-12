@@ -16,9 +16,16 @@ async function launchBrowser() {
     // Configurações específicas para Vercel
     const executablePath = await chromiumPack.executablePath();
     const execDir = path.dirname(executablePath);
-    
-    // CORREÇÃO CRÍTICA: Diz ao sistema onde encontrar as bibliotecas (libnss3, etc)
-    process.env.LD_LIBRARY_PATH = execDir;
+
+    // O @sparticuz/chromium já detecta Vercel+Node>=20 sozinho e configura
+    // LD_LIBRARY_PATH apontando para /tmp/al2023/lib (onde ficam libnspr4.so, libnss3.so etc)
+    // assim que o módulo é importado. Por isso aqui é preciso ADICIONAR o execDir
+    // (onde fica o binário do chromium e as libs do swiftshader), nunca sobrescrever —
+    // sobrescrever apaga o /tmp/al2023/lib e derruba o processo com "libnspr4.so: cannot open shared object file".
+    const existingLibPaths = (process.env.LD_LIBRARY_PATH || "").split(":").filter(Boolean);
+    if (!existingLibPaths.includes(execDir)) {
+      process.env.LD_LIBRARY_PATH = [...existingLibPaths, execDir].join(":");
+    }
 
     return await chromium.launch({
       args: chromiumPack.args,
@@ -37,7 +44,7 @@ async function prerender() {
 const previewServer = await preview({ preview: { port: 4173 } });
 const baseUrl = "http://localhost:4173";
 
-const browser = await chromium.launch();
+const browser = await launchBrowser();
 for (const route of routes) {
   const page = await browser.newPage();
   await page.goto(baseUrl + route, { waitUntil: "networkidle" });
