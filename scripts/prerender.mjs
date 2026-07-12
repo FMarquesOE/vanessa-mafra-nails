@@ -37,7 +37,7 @@ async function prerender() {
 const previewServer = await preview({ preview: { port: 4173 } });
 const baseUrl = "http://localhost:4173";
 
-const browser = await chromium.launch();
+const browser = await launchBrowser();
 for (const route of routes) {
   const page = await browser.newPage();
   await page.goto(baseUrl + route, { waitUntil: "networkidle" });
