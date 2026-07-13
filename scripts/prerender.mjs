@@ -35,7 +35,7 @@ async function launchBrowser() {
     }
 
     return await chromium.launch({
-      args: chromiumPack.args,
+      args: [...chromiumPack.args, '--disable--dev-shm-usage', '--no-sandbox'],
       executablePath: executablePath,
       headless: true,
     });
@@ -50,18 +50,17 @@ async function launchBrowser() {
 async function prerender() {
 const previewServer = await preview({ preview: { port: 4173 } });
 const baseUrl = "http://localhost:4173";
-
 const browser = await launchBrowser();
+const page = await Browser.newPage();
 for (const route of routes) {
-  const page = await browser.newPage();
-  await page.goto(baseUrl + route, { waitUntil: "networkidle" });
+  await page.goto(baseUrl + route, { waitUntil: "domcontentloaded" });
   const html = await page.content();
   const outDir = route === "/" ? "dist" : path.join("dist", route);
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(path.join(outDir, "index.html"), html);
-  await page.close();
   console.log(`✅ Pré-renderizado: ${route}`);
 }
+await page.close();
 await browser.close();
 previewServer.httpServer.close();
 }
