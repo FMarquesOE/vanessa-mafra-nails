@@ -13,6 +13,13 @@ async function launchBrowser() {
   const isVercel = !!process.env.VERCEL;
   
   if (isVercel) {
+    // Desativa o stack de WebGL/GPU (swiftshader/angle). A página não precisa disso
+    // pra pré-renderizar HTML estático, e é o que está causando os crashes
+    // "SharedImageManager::ProduceSkia: ... non-existent mailbox" no modo --single-process
+    // da Vercel, que derrubam o browser inteiro depois da primeira página.
+    // Atenção: é uma propriedade (setter), não um método — nada de "()" no final.
+    chromiumPack.setGraphicsMode = false;
+
     // Configurações específicas para Vercel
     const executablePath = await chromiumPack.executablePath();
     const execDir = path.dirname(executablePath);
