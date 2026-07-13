@@ -51,7 +51,8 @@ async function prerender() {
 const previewServer = await preview({ preview: { port: 4173 } });
 const baseUrl = "http://localhost:4173";
 const browser = await launchBrowser();
-const page = await Browser.newPage();
+const page = await browser.newPage();
+
 for (const route of routes) {
   await page.goto(baseUrl + route, { waitUntil: "domcontentloaded" });
   const html = await page.content();
