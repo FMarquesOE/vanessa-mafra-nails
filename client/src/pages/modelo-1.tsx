@@ -14,7 +14,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/useMobile";
-import { AlignCenter } from "lucide-react";
+import { AlignCenter, Library } from "lucide-react";
 import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
 import PhotoFrame from "@/components/PhotoFrame";
@@ -223,7 +223,7 @@ function SobreSection() {
               >
                 O espaço Vanessa Mafra nasceu da crença de que beleza verdadeira
                 é aquela que parece natural — como se sempre tivesse estado ali.
-                Especialista em unhas de gel naturalista, cada atendimento é
+                Especialista de unhas em gel naturalista, cada atendimento é
                 pensado nos mínimos detalhes.
               </p>
             </ScrollReveal>
@@ -264,7 +264,7 @@ function SobreSection() {
                     opacity: 0.65,
                   }}
                 >
-                  Especialista em Unhas de Gel
+                  Especialista de Unhas em Gel
                 </span>
               </div>
             </ScrollReveal>
