@@ -5,7 +5,7 @@ export const CONFIG = {
   descricaoHero:
     "Espaço especializado de unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e capricho se encontram.",
   endereco:
-    "Edifício Palácio Manom\nAv. Dr. Manuel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
+    "Edifício Palácio Manom\nAv. Dr. Manoel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
   enderecoMaps:
     "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
   whatsapp:

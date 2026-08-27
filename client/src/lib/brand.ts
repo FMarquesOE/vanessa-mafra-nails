@@ -9,7 +9,7 @@ export const BRAND = {
   fullTitle: "Vanessa Mafra · Especialista em Unhas",
   positioning: "Sofisticação com naturalidade",
   city: "Duque de Caxias · RJ",
-  address: "Av. Dr. Manuel Teles, 31 — sala 1203, Centro",
+  address: "Av. Dr. Manoel Teles, 31 — sala 1203, Centro",
   whatsappLabel: "Agende pelo WhatsApp",
   instagram: "@vanessamafra_especialistanails",
   instagramUrl: "https://www.instagram.com/vanessamafra_especialistanails/",
