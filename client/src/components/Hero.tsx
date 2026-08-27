@@ -82,9 +82,9 @@ export default function Hero() {
             }}
           >
             <img
-              src="/fotos/ImgVanessa.png"
+              src="/fotos/ImgVanessa.webp"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              alt="Topo Mobile"
+              alt="Vanessa Mafra, especialista em unhas em gel, no espaço em Duque de Caxias"
             />
           </div>
 
@@ -159,6 +159,17 @@ export default function Hero() {
             }}
           >
             {CONFIG.nome}
+            <span
+              style={{
+                display: "block",
+                fontSize: "clamp(15px, 4.5vw, 20px)",
+                fontWeight: 400,
+                letterSpacing: 0,
+                marginTop: 6,
+              }}
+            >
+              {CONFIG.titulo}
+            </span>
           </motion.h1>
 
           <motion.p
@@ -315,6 +326,17 @@ export default function Hero() {
           }}
         >
           {CONFIG.nome}
+          <span
+            style={{
+              display: "block",
+              fontSize: "clamp(18px, 2vw, 24px)",
+              fontWeight: 400,
+              letterSpacing: 0,
+              marginTop: 8,
+            }}
+          >
+            {CONFIG.titulo}
+          </span>
         </motion.h1>
 
         <motion.p
@@ -425,7 +447,7 @@ export default function Hero() {
           }}
         >
           <img
-            src="/fotos/ImgVanessa.png"
+            src="/fotos/ImgVanessa.webp"
             alt="Estúdio"
             style={{
               position: "absolute",

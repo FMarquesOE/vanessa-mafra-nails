@@ -1,0 +1,251 @@
+diff --git a/client/src/components/Hero.tsx b/client/src/components/Hero.tsx
+index fae512f..7f0a68c 100644
+--- a/client/src/components/Hero.tsx
++++ b/client/src/components/Hero.tsx
+@@ -82,9 +82,9 @@ export default function Hero() {
+             }}
+           >
+             <img
+-              src="/fotos/ImgVanessa.png"
++              src="/fotos/ImgVanessa.webp"
+               style={{ width: "100%", height: "100%", objectFit: "cover" }}
+-              alt="Topo Mobile"
++              alt="Vanessa Mafra, especialista em unhas em gel, no espaço em Duque de Caxias"
+             />
+           </div>
+ 
+@@ -159,6 +159,17 @@ export default function Hero() {
+             }}
+           >
+             {CONFIG.nome}
++            <span
++              style={{
++                display: "block",
++                fontSize: "clamp(15px, 4.5vw, 20px)",
++                fontWeight: 400,
++                letterSpacing: 0,
++                marginTop: 6,
++              }}
++            >
++              {CONFIG.titulo}
++            </span>
+           </motion.h1>
+ 
+           <motion.p
+@@ -315,6 +326,17 @@ export default function Hero() {
+           }}
+         >
+           {CONFIG.nome}
++          <span
++            style={{
++              display: "block",
++              fontSize: "clamp(18px, 2vw, 24px)",
++              fontWeight: 400,
++              letterSpacing: 0,
++              marginTop: 8,
++            }}
++          >
++            {CONFIG.titulo}
++          </span>
+         </motion.h1>
+ 
+         <motion.p
+@@ -425,7 +447,7 @@ export default function Hero() {
+           }}
+         >
+           <img
+-            src="/fotos/ImgVanessa.png"
++            src="/fotos/ImgVanessa.webp"
+             alt="Estúdio"
+             style={{
+               position: "absolute",
+diff --git a/client/src/components/Nav.tsx b/client/src/components/Nav.tsx
+index 167ca43..6abfdfe 100644
+--- a/client/src/components/Nav.tsx
++++ b/client/src/components/Nav.tsx
+@@ -56,8 +56,8 @@ export default function Nav() {
+             }}
+           >
+             <img
+-              src="/fotos/Logo.png"
+-              alt="Logo_Superior"
++              src="/fotos/Logo.webp"
++              alt="Vanessa Mafra Unhas"
+               style={{ width: "100%", height: "100%" }}
+             />
+           </div>
+diff --git a/client/src/components/PhotoFrame.tsx b/client/src/components/PhotoFrame.tsx
+index b407649..0729f2e 100644
+--- a/client/src/components/PhotoFrame.tsx
++++ b/client/src/components/PhotoFrame.tsx
+@@ -10,6 +10,7 @@ export default function PhotoFrame({
+   gradientFallback,
+   label,
+   hoverLayer = false,
++  loading = "lazy",
+ }: {
+   src?: string;
+   alt?: string;
+@@ -18,6 +19,7 @@ export default function PhotoFrame({
+   gradientFallback?: string;
+   label?: string;
+   hoverLayer?: boolean;
++  loading?: "lazy" | "eager";
+ }) {
+   const c = CONFIG.cores;
+   const [isHovered, setIsHovered] = useState(false);
+@@ -49,6 +51,7 @@ export default function PhotoFrame({
+         <img
+           src={src}
+           alt={alt || label || ""}
++          loading={loading}
+           style={{
+             width: "100%",
+             height: "100%",
+diff --git a/client/src/pages/modelo-1.tsx b/client/src/pages/modelo-1.tsx
+index ee7eb15..fc8d62a 100644
+--- a/client/src/pages/modelo-1.tsx
++++ b/client/src/pages/modelo-1.tsx
+@@ -177,7 +177,7 @@ function SobreSection() {
+               style={{ width: "100%", maxWidth: isMobile ? 360 : undefined }}
+             >
+               <PhotoFrame
+-                src="/fotos/OEspaco.png"
++                src="/fotos/OEspaco.webp"
+                 arch
+                 aspectRatio={isMobile ? "4/5" : "3/4"}
+                 label="O Espaço"
+@@ -302,6 +302,21 @@ function ServicosSection() {
+       <div style={{ maxWidth: 1200, margin: "auto" }}>
+         <ScrollReveal>
+           <SectionLabel numero="II" label="Serviços" color={c.fundo} />
++          <h2
++            style={{
++              position: "absolute",
++              width: 1,
++              height: 1,
++              padding: 0,
++              margin: -1,
++              overflow: "hidden",
++              clip: "rect(0, 0, 0, 0)",
++              whiteSpace: "nowrap",
++              border: 0,
++            }}
++          >
++            Nossos Serviços de Unhas em Gel
++          </h2>
+           <Filete />
+         </ScrollReveal>
+ 
+@@ -468,6 +483,21 @@ function DepoimentosSection() {
+             numero="III"
+             label={"Avaliações de clientes\nno Google Mapas"}
+           />
++          <h2
++            style={{
++              position: "absolute",
++              width: 1,
++              height: 1,
++              padding: 0,
++              margin: -1,
++              overflow: "hidden",
++              clip: "rect(0, 0, 0, 0)",
++              whiteSpace: "nowrap",
++              border: 0,
++            }}
++          >
++            O que dizem sobre a Vanessa Mafra
++          </h2>
+           <Filete />
+         </ScrollReveal>
+ 
+@@ -764,8 +794,9 @@ function Footer() {
+       >
+         <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60 }}>
+           <img
+-            src="/fotos/Logo.png"
+-            alt="Logo Inferior"
++            src="/fotos/Logo.webp"
++            alt="Vanessa Mafra Unhas"
++            loading="lazy"
+             style={{ width: "100%", height: "100%" }}
+           />
+         </div>
+diff --git a/index.html b/index.html
+index fd52881..b98d5a5 100644
+--- a/index.html
++++ b/index.html
+@@ -28,7 +28,7 @@
+     
+     <meta
+       name="description"
+-      content="Espaço para suas unhas em Duque de Caxias. Alongamento em gel (Molde F1), Manicure e Pedicure Tradicional, Plástica ou SPA dos Pés."
++      content="Espaço para suas unhas em Duque de Caxias. Alongamento em gel (Molde F1), Manicure, Pedicure, Plástica ou SPA dos Pés. Agende seu horário!"
+     />
+     <meta name="robots" content="index, follow" />
+     <meta name="theme-color" content="#9b7b5b" />
+@@ -90,7 +90,7 @@
+         "@context": "https://schema.org",
+         "@type": "BeautySalon",
+         "name": "Vanessa Mafra Alongamento de Unhas em Gel",
+-        "image": "https://vmafraunhas.com.br/fotos/OG_Image.jpg",
++        "image": "https://vmafraunhas.com.br/fotos/OG_Image.png",
+         "@id": "https://vmafraunhas.com.br",
+         "url": "https://vmafraunhas.com.br",
+         "telephone": "+5521999277505",
+@@ -124,7 +124,24 @@
+             "closes": "19:00"
+           }
+         ],
+-        "sameAs": ["https://instagram.com/vanessamafra_especialistanails"]
++        "sameAs": ["https://instagram.com/vanessamafra_especialistanails"],
++        "review": [
++          {
++            "@type": "Review",
++            "author": { "@type": "Person", "name": "Suely Santos" },
++            "reviewBody": "Atendimento impecável, nail muito simpática, profissional, atenciosa. Espaço confortável, música boa, climatizado, com direito a massagem nos pés!"
++          },
++          {
++            "@type": "Review",
++            "author": { "@type": "Person", "name": "Denise Boschiglia" },
++            "reviewBody": "Profissional competente e muito detalhista, coisa que mais amo nela"
++          },
++          {
++            "@type": "Review",
++            "author": { "@type": "Person", "name": "Safira Canuto" },
++            "reviewBody": "Vanessa como sempre muito agradável de uma simpatia ímpar, ótimo atendimento e um serviço de excelência."
++          }
++        ]
+       }
+     </script>
+   </head>
+diff --git a/robots.txt b/robots.txt
+index 6208ced..dcd605e 100644
+--- a/robots.txt
++++ b/robots.txt
+@@ -1,4 +1,4 @@
+ User-agent: *
+ Allow: /
+ 
+-Sitemap: https://vmafraunhas.com.br
+\ No newline at end of file
++Sitemap: https://vmafraunhas.com.br/sitemap.xml
+\ No newline at end of file
+diff --git a/scripts/prerender.mjs b/scripts/prerender.mjs
+index 1929e26..060e845 100644
+--- a/scripts/prerender.mjs
++++ b/scripts/prerender.mjs
+@@ -5,9 +5,10 @@ import path from 'path';
+ import { preview } from "vite";
+ import fs from "node:fs/promises";
+ 
+-// Ajuste para as rotas reais definidas no seu wouter (App.tsx ou onde ficam as <Route>)
+-
+-const routes = ["/", "/servicos", "/sobre", "/contato"];
++// O site é uma pagina unica (ver client/src/App.tsx: so existe <Route path="/" .../>).
++// "/servicos", "/sobre" e "/contato" sao ancoras (#servicos, #sobre, #contato) da MESMA
++// pagina, nao rotas separadas — por isso so pre-renderizamos "/".
++const routes = ["/"];
+ 
+ async function launchBrowser() {
+   const isVercel = !!process.env.VERCEL;

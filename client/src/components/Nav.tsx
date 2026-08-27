@@ -56,8 +56,8 @@ export default function Nav() {
             }}
           >
             <img
-              src="/fotos/Logo.png"
-              alt="Logo_Superior"
+              src="/fotos/Logo.webp"
+              alt="Vanessa Mafra Unhas"
               style={{ width: "100%", height: "100%" }}
             />
           </div>

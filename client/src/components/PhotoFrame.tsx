@@ -10,6 +10,7 @@ export default function PhotoFrame({
   gradientFallback,
   label,
   hoverLayer = false,
+  loading = "lazy",
 }: {
   src?: string;
   alt?: string;
@@ -18,6 +19,7 @@ export default function PhotoFrame({
   gradientFallback?: string;
   label?: string;
   hoverLayer?: boolean;
+  loading?: "lazy" | "eager";
 }) {
   const c = CONFIG.cores;
   const [isHovered, setIsHovered] = useState(false);
@@ -49,6 +51,7 @@ export default function PhotoFrame({
         <img
           src={src}
           alt={alt || label || ""}
+          loading={loading}
           style={{
             width: "100%",
             height: "100%",

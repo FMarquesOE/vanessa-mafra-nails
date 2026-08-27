@@ -177,7 +177,7 @@ function SobreSection() {
               style={{ width: "100%", maxWidth: isMobile ? 360 : undefined }}
             >
               <PhotoFrame
-                src="/fotos/OEspaco.png"
+                src="/fotos/OEspaco.webp"
                 arch
                 aspectRatio={isMobile ? "4/5" : "3/4"}
                 label="O Espaço"
@@ -302,6 +302,21 @@ function ServicosSection() {
       <div style={{ maxWidth: 1200, margin: "auto" }}>
         <ScrollReveal>
           <SectionLabel numero="II" label="Serviços" color={c.fundo} />
+          <h2
+            style={{
+              position: "absolute",
+              width: 1,
+              height: 1,
+              padding: 0,
+              margin: -1,
+              overflow: "hidden",
+              clip: "rect(0, 0, 0, 0)",
+              whiteSpace: "nowrap",
+              border: 0,
+            }}
+          >
+            Nossos Serviços de Unhas em Gel
+          </h2>
           <Filete />
         </ScrollReveal>
 
@@ -468,6 +483,21 @@ function DepoimentosSection() {
             numero="III"
             label={"Avaliações de clientes\nno Google Mapas"}
           />
+          <h2
+            style={{
+              position: "absolute",
+              width: 1,
+              height: 1,
+              padding: 0,
+              margin: -1,
+              overflow: "hidden",
+              clip: "rect(0, 0, 0, 0)",
+              whiteSpace: "nowrap",
+              border: 0,
+            }}
+          >
+            O que dizem sobre a Vanessa Mafra
+          </h2>
           <Filete />
         </ScrollReveal>
 
@@ -764,8 +794,9 @@ function Footer() {
       >
         <div style={{ width: isMobile ? 40 : 60, height: isMobile ? 40 : 60 }}>
           <img
-            src="/fotos/Logo.png"
-            alt="Logo Inferior"
+            src="/fotos/Logo.webp"
+            alt="Vanessa Mafra Unhas"
+            loading="lazy"
             style={{ width: "100%", height: "100%" }}
           />
         </div>

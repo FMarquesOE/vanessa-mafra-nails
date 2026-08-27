@@ -5,9 +5,10 @@ import path from 'path';
 import { preview } from "vite";
 import fs from "node:fs/promises";
 
-// Ajuste para as rotas reais definidas no seu wouter (App.tsx ou onde ficam as <Route>)
-
-const routes = ["/", "/servicos", "/sobre", "/contato"];
+// O site é uma pagina unica (ver client/src/App.tsx: so existe <Route path="/" .../>).
+// "/servicos", "/sobre" e "/contato" sao ancoras (#servicos, #sobre, #contato) da MESMA
+// pagina, nao rotas separadas — por isso so pre-renderizamos "/".
+const routes = ["/"];
 
 async function launchBrowser() {
   const isVercel = !!process.env.VERCEL;
