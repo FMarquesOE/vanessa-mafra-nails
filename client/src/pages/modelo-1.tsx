@@ -579,6 +579,228 @@ function DepoimentosSection() {
 }
 
 // =============================================================================
+// DÚVIDAS FREQUENTES
+// =============================================================================
+function FaqItem({
+  numero,
+  pergunta,
+  resposta,
+  isOpen,
+  onToggle,
+  c,
+  isMobile,
+}: {
+  numero: string;
+  pergunta: string;
+  resposta: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  c: typeof CONFIG.cores;
+  isMobile: boolean;
+}) {
+  return (
+    <motion.div
+      variants={vFadeUp}
+      style={{
+        backgroundColor: c.fundo,
+        border: `1px solid ${c.acento}18`,
+      }}
+    >
+      <button
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 20,
+          padding: isMobile ? "22px 24px" : "28px 40px",
+          background: "none",
+          border: "none",
+          textAlign: "left",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "baseline", gap: 18 }}>
+          <span
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontSize: 15,
+              color: c.texto,
+              opacity: 0.5,
+              letterSpacing: "0.08em",
+            }}
+          >
+            {numero}
+          </span>
+          <span
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontSize: isMobile ? 19 : 22,
+              fontWeight: 500,
+              color: c.texto,
+              lineHeight: 1.3,
+            }}
+          >
+            {pergunta}
+          </span>
+        </div>
+        <span
+          style={{
+            flexShrink: 0,
+            width: 26,
+            height: 26,
+            borderRadius: "50%",
+            border: `1px solid ${c.texto}30`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: "Inter, sans-serif",
+            fontSize: 15,
+            color: c.texto,
+            opacity: 0.7,
+            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+            transition: "transform 300ms",
+          }}
+        >
+          +
+        </span>
+      </button>
+
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? "auto" : 0,
+          opacity: isOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        style={{ overflow: "hidden" }}
+      >
+        <p
+          style={{
+            fontFamily: "DM Sans, Inter, sans-serif",
+            fontSize: isMobile ? 14.5 : 15.5,
+            lineHeight: 1.8,
+            color: c.texto,
+            opacity: 0.65,
+            padding: isMobile ? "0 24px 24px 24px" : "0 40px 32px 74px",
+          }}
+        >
+          {resposta}
+        </p>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function DuvidasSection() {
+  const c = CONFIG.cores;
+  const isMobile = useIsMobile();
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <section
+      id="duvidas"
+      style={{
+        backgroundColor: c.fundoSecundario,
+        padding: isMobile ? "72px 24px" : "120px 80px",
+      }}
+    >
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <ScrollReveal>
+          <SectionLabel
+            numero="IV"
+            label="Dúvidas Frequentes"
+            color={c.fundo}
+          />
+          <h2
+            style={{
+              position: "absolute",
+              width: 1,
+              height: 1,
+              padding: 0,
+              margin: -1,
+              overflow: "hidden",
+              clip: "rect(0, 0, 0, 0)",
+              whiteSpace: "nowrap",
+              border: 0,
+            }}
+          >
+            Dúvidas frequentes sobre alongamento de unhas em gel
+          </h2>
+          <Filete />
+        </ScrollReveal>
+
+        <motion.div
+          variants={vStagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            marginTop: isMobile ? 40 : 64,
+          }}
+        >
+          {CONFIG.duvidas.map((d, index) => (
+            <FaqItem
+              key={d.pergunta}
+              numero={String(index + 1).padStart(2, "0")}
+              pergunta={d.pergunta}
+              resposta={d.resposta}
+              isOpen={openIndex === index}
+              onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+              c={c}
+              isMobile={isMobile}
+            />
+          ))}
+        </motion.div>
+
+        <ScrollReveal>
+          <div style={{ textAlign: "center", marginTop: 44 }}>
+            <span
+              style={{
+                fontFamily: "DM Sans, Inter, sans-serif",
+                fontSize: isMobile ? 14 : 15,
+                color: c.fundo,
+                opacity: 0.7,
+                display: "block",
+                marginBottom: 18,
+              }}
+            >
+              Ainda ficou com alguma dúvida?
+            </span>
+            <a
+              href={`https://wa.me/${CONFIG.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 12,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: c.fundo,
+                opacity: 0.85,
+                textDecoration: "none",
+                borderBottom: `1px solid ${c.fundo}60`,
+                paddingBottom: 3,
+                transition: "opacity 300ms",
+                display: "inline-block",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+              onMouseLeave={e => (e.currentTarget.style.opacity = "0.85")}
+            >
+              Falar no WhatsApp →
+            </a>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+// =============================================================================
 // CONTATO
 // =============================================================================
 function ContatoSection() {
@@ -605,7 +827,7 @@ function ContatoSection() {
           <div>
             <ScrollReveal>
               <SectionLabel
-                numero="IV"
+                numero="V"
                 label="Localização & Contato"
                 color={c.fundo}
               />
@@ -852,6 +1074,7 @@ export default function Modelo1() {
       <SobreSection />
       <ServicosSection />
       <DepoimentosSection />
+      <DuvidasSection />
       <ContatoSection />
       <Footer />
     </div>

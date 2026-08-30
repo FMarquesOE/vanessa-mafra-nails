@@ -95,4 +95,46 @@ export const CONFIG = {
         "Vanessa como sempre muito agradável de uma simpatia ímpar, ótimo atendimento e um serviço de excelência.",
     },
   ],
+  duvidas: [
+    {
+      pergunta: "Dói fazer o alongamento?",
+      resposta:
+        "Não. O processo é indolor — no máximo um leve incômodo na lixa se a unha estiver muito fina, e isso é ajustado na hora.",
+    },
+    {
+      pergunta: "Estraga a unha natural?",
+      resposta:
+        "Não. Quando aplicado e removido por uma profissional, o alongamento na verdade protege a unha natural enquanto ela cresce.",
+    },
+    {
+      pergunta: "Quanto tempo dura?",
+      resposta:
+        "Em média de 3 a 4 semanas. Recomendamos manutenção a cada 15 a 21 dias para manter o acabamento perfeito.",
+    },
+    {
+      pergunta: "Posso fazer se eu rango as unhas?",
+      resposta:
+        "Sim! Essa é inclusive uma das razões mais comuns para procurar o alongamento — ele protege a unha natural enquanto ela se recupera.",
+    },
+    {
+      pergunta: "Quanto tempo leva a aplicação?",
+      resposta:
+        "Entre 1h30 e 2h30, dependendo da técnica e do formato escolhido.",
+    },
+    {
+      pergunta: "Posso tirar em casa?",
+      resposta:
+        "Não recomendamos. Arrancar ou remover sem o processo correto é o que mais machuca a unha — a remoção deve sempre ser feita por profissional.",
+    },
+    {
+      pergunta: "Aguenta o dia a dia (água, tarefas domésticas)?",
+      resposta:
+        "Sim, é bem mais resistente que o esmalte comum. Só recomendamos luvas em contato prolongado com produtos de limpeza.",
+    },
+    {
+      pergunta: "Qual técnica é ideal para mim: gel, fibra ou acrigel?",
+      resposta:
+        "Cada técnica tem um peso e uma sensação diferente. Na avaliação a gente indica a melhor opção para o seu tipo de unha e rotina.",
+    },
+  ],
 };
