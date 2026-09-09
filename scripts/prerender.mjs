@@ -18,7 +18,14 @@ const OUT_DIR = path.resolve(process.cwd(), "dist", "public");
 
 // Seletor que so existe depois do React montar. Se ele nao aparecer, o prerender
 // capturou a casca vazia e o build deve falhar em vez de publicar uma pagina sem conteudo.
-const READY_SELECTOR = "#root > *";
+//
+// NAO pode ser simplesmente "#root > *": o <Toaster /> (sonner) e montado ANTES do
+// <Router /> em App.tsx e renderiza um <section aria-label="Notifications ..."> vazio
+// como primeiro filho de #root. Esse section fica sem dimensao (sem toast ativo), entao
+// o Playwright nunca o considera "visible" e o waitForSelector estoura em timeout mesmo
+// com a pagina real ja renderizada ao lado dele. Por isso excluimos explicitamente esse
+// container de notificacoes e esperamos o conteudo real da pagina.
+const READY_SELECTOR = '#root > *:not([aria-label^="Notifications"])';
 
 async function launchBrowser() {
   const isVercel = !!process.env.VERCEL;
