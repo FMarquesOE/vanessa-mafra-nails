@@ -14,8 +14,6 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/useMobile";
-import { AlignCenter, Library } from "lucide-react";
-import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/Nav";
 import PhotoFrame from "@/components/PhotoFrame";
 import Hero, { RotatingSeal } from "@/components/Hero";
