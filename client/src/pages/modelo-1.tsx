@@ -88,15 +88,18 @@ function SectionLabel({
   color = CONFIG.cores.acento,
   numeroColor,
   labelColor,
+  as = "span",
 }: {
   numero: string;
   label: string;
   color?: string;
   numeroColor?: string;
   labelColor?: string;
+  as?: "span" | "h2";
 }) {
   const numberColor = numeroColor ?? color;
   const titleColor = labelColor ?? color;
+  const LabelTag = as;
 
   return (
     <div
@@ -121,8 +124,9 @@ function SectionLabel({
       <div
         style={{ height: 1, width: 40, backgroundColor: color, opacity: 0.3 }}
       />
-      <span
+      <LabelTag
         style={{
+          margin: 0,
           fontFamily: "Inter, sans-serif",
           fontSize: 12,
           fontWeight: 600,
@@ -134,7 +138,7 @@ function SectionLabel({
         }}
       >
         {label}
-      </span>
+      </LabelTag>
     </div>
   );
 }
@@ -178,6 +182,7 @@ function SobreSection() {
             >
               <PhotoFrame
                 src="/fotos/OEspaco.webp"
+                alt="Espaço da Vanessa Mafra para alongamento de unhas em gel em Duque de Caxias"
                 arch
                 aspectRatio={isMobile ? "4/5" : "3/4"}
                 label="O Espaço"
@@ -301,22 +306,12 @@ function ServicosSection() {
     >
       <div style={{ maxWidth: 1200, margin: "auto" }}>
         <ScrollReveal>
-          <SectionLabel numero="II" label="Serviços" color={c.fundo} />
-          <h2
-            style={{
-              position: "absolute",
-              width: 1,
-              height: 1,
-              padding: 0,
-              margin: -1,
-              overflow: "hidden",
-              clip: "rect(0, 0, 0, 0)",
-              whiteSpace: "nowrap",
-              border: 0,
-            }}
-          >
-            Nossos Serviços de Unhas em Gel
-          </h2>
+          <SectionLabel
+            numero="II"
+            label={"Serviços de\nUnhas em Gel"}
+            color={c.fundo}
+            as="h2"
+          />
           <Filete />
         </ScrollReveal>
 
@@ -482,22 +477,8 @@ function DepoimentosSection() {
           <SectionLabel
             numero="III"
             label={"Avaliações de clientes\nno Google Mapas"}
+            as="h2"
           />
-          <h2
-            style={{
-              position: "absolute",
-              width: 1,
-              height: 1,
-              padding: 0,
-              margin: -1,
-              overflow: "hidden",
-              clip: "rect(0, 0, 0, 0)",
-              whiteSpace: "nowrap",
-              border: 0,
-            }}
-          >
-            O que dizem sobre a Vanessa Mafra
-          </h2>
           <Filete />
         </ScrollReveal>
 
@@ -606,6 +587,7 @@ function FaqItem({
         border: `1px solid ${c.acento}18`,
       }}
     >
+      <h3 style={{ margin: 0 }}>
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
@@ -666,6 +648,7 @@ function FaqItem({
           +
         </span>
       </button>
+      </h3>
 
       <motion.div
         initial={false}
@@ -710,24 +693,10 @@ function DuvidasSection() {
         <ScrollReveal>
           <SectionLabel
             numero="IV"
-            label="Dúvidas Frequentes"
+            label={"Dúvidas Frequentes\nsobre Unhas em Gel"}
             color={c.fundo}
+            as="h2"
           />
-          <h2
-            style={{
-              position: "absolute",
-              width: 1,
-              height: 1,
-              padding: 0,
-              margin: -1,
-              overflow: "hidden",
-              clip: "rect(0, 0, 0, 0)",
-              whiteSpace: "nowrap",
-              border: 0,
-            }}
-          >
-            Dúvidas frequentes sobre alongamento de unhas em gel
-          </h2>
           <Filete />
         </ScrollReveal>
 

@@ -448,7 +448,7 @@ export default function Hero() {
         >
           <img
             src="/fotos/ImgVanessa.webp"
-            alt="Estúdio"
+            alt="Vanessa Mafra, especialista em unhas em gel, em seu estúdio no Centro de Duque de Caxias"
             style={{
               position: "absolute",
               inset: 0,
