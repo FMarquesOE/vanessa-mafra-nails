@@ -1,7 +1,9 @@
 export const CONFIG = {
   nome: "Vanessa Mafra",
   titulo: "Especialista no Alongamento de Unhas em Gel",
-     "Espaço especializado de unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e capricho se encontram.",
+  slogan: "Sofisticação com Naturalidade",
+  descricaoHero:
+    "Espaço especializado de unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e capricho se encontram.",
   endereco:
     "Edifício Palácio Manom\nAv. Dr. Manoel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
   enderecoMaps:
