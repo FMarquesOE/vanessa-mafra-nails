@@ -1,13 +1,13 @@
 export const CONFIG = {
   nome: "Vanessa Mafra",
   titulo: "Especialista no Alongamento de Unhas em Gel",
-  slogan: "Sofisticação com Naturalidade",
-  descricaoHero:
-    "Espaço especializado de unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e capricho se encontram.",
+     "Espaço especializado de unhas em gel naturalista em Duque de Caxias. Um espaço onde técnica e capricho se encontram.",
   endereco:
     "Edifício Palácio Manom\nAv. Dr. Manoel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
   enderecoMaps:
     "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
+  enderecoMapsEmbed:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.3515583046096!2d-43.31099739999999!3d-22.7894337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997bef78f9cff5%3A0x83ff5be8789282e0!2sVanessa%20Mafra%20-%20Alongamento%20de%20Unhas%20em%20Gel!5e0!3m2!1spt-BR!2sbr!4v1789004035194!5m2!1spt-BR!2sbr",
   whatsapp:
     "5521999277505?text=Ol%C3%A1%20Vanessa%20Mafra!%20O%20Espa%C3%A7o%20%C3%A9%20maravilhoso%2C%20como%20fa%C3%A7o%20pra%20marcar%20um%20hor%C3%A1rio%20com%20voc%C3%AA%3F",
   instagram: "@vanessamafra_especialistanails",
@@ -112,7 +112,7 @@ export const CONFIG = {
         "Em média de 3 a 4 semanas. Recomendamos manutenção a cada 15 a 21 dias para manter o acabamento perfeito.",
     },
     {
-      pergunta: "Posso fazer se eu rango as unhas?",
+      pergunta: "Posso fazer se eu roo as unhas?",
       resposta:
         "Sim! Essa é inclusive uma das razões mais comuns para procurar o alongamento — ele protege a unha natural enquanto ela se recupera.",
     },

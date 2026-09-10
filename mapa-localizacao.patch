@@ -1,0 +1,170 @@
+diff --git a/client/src/components/MapaLocalizacao.tsx b/client/src/components/MapaLocalizacao.tsx
+new file mode 100644
+index 0000000..d70ceb5
+--- /dev/null
++++ b/client/src/components/MapaLocalizacao.tsx
+@@ -0,0 +1,93 @@
++import { useState } from "react";
++import { CONFIG } from "@/lib/siteConfig";
++
++/**
++ * Box com o mapa do Google Maps, exibido logo abaixo do endereço como
++ * referência/complemento visual. Usa o padrão "click-to-load": em vez de
++ * carregar o iframe do Google (pesado) direto no primeiro paint, mostra um
++ * placeholder leve e só monta o iframe quando o visitante clica — evita
++ * baixar scripts do Google numa seção abaixo da dobra.
++ */
++interface MapaLocalizacaoProps {
++  embedUrl: string;
++  titulo?: string;
++  aspectRatio?: string;
++}
++
++export default function MapaLocalizacao({
++  embedUrl,
++  titulo = `Localização – ${CONFIG.nome}`,
++  aspectRatio = "16/9",
++}: MapaLocalizacaoProps) {
++  const c = CONFIG.cores;
++  const [carregado, setCarregado] = useState(false);
++
++  return (
++    <div
++      style={{
++        position: "relative",
++        width: "100%",
++        aspectRatio,
++        borderRadius: 6,
++        overflow: "hidden",
++        border: `1px solid ${c.acentoClaro}33`,
++      }}
++    >
++      {carregado ? (
++        <iframe
++          src={embedUrl}
++          title={titulo}
++          loading="lazy"
++          referrerPolicy="strict-origin-when-cross-origin"
++          allowFullScreen
++          style={{
++            border: 0,
++            width: "100%",
++            height: "100%",
++            display: "block",
++          }}
++        />
++      ) : (
++        <button
++          type="button"
++          onClick={() => setCarregado(true)}
++          aria-label="Carregar mapa com a localização no Google Maps"
++          style={{
++            width: "100%",
++            height: "100%",
++            display: "flex",
++            flexDirection: "column",
++            alignItems: "center",
++            justifyContent: "center",
++            gap: 8,
++            border: "none",
++            cursor: "pointer",
++            backgroundColor: `${c.acentoClaro}22`,
++            transition: "background-color 250ms",
++          }}
++          onMouseEnter={e =>
++            (e.currentTarget.style.backgroundColor = `${c.acentoClaro}3a`)
++          }
++          onMouseLeave={e =>
++            (e.currentTarget.style.backgroundColor = `${c.acentoClaro}22`)
++          }
++        >
++          <span style={{ fontSize: 22 }}>📍</span>
++          <span
++            style={{
++              fontFamily: "Inter, sans-serif",
++              fontSize: 12,
++              fontWeight: 600,
++              letterSpacing: "0.12em",
++              textTransform: "uppercase",
++              color: c.fundo,
++              opacity: 0.85,
++            }}
++          >
++            Ver mapa da localização
++          </span>
++        </button>
++      )}
++    </div>
++  );
++}
+diff --git a/client/src/lib/siteConfig.ts b/client/src/lib/siteConfig.ts
+index 3b2ae99..598e3b3 100644
+--- a/client/src/lib/siteConfig.ts
++++ b/client/src/lib/siteConfig.ts
+@@ -8,6 +8,8 @@ export const CONFIG = {
+     "Edifício Palácio Manom\nAv. Dr. Manoel Teles, 31 — sala 1203 — Centro — Duque de Caxias/RJ",
+   enderecoMaps:
+     "https://www.google.com/maps/search/?api=1&query=Vanessa+Mafra+Especialista+Nails",
++  enderecoMapsEmbed:
++    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.3515583046096!2d-43.31099739999999!3d-22.7894337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997bef78f9cff5%3A0x83ff5be8789282e0!2sVanessa%20Mafra%20-%20Alongamento%20de%20Unhas%20em%20Gel!5e0!3m2!1spt-BR!2sbr!4v1789004035194!5m2!1spt-BR!2sbr",
+   whatsapp:
+     "5521999277505?text=Ol%C3%A1%20Vanessa%20Mafra!%20O%20Espa%C3%A7o%20%C3%A9%20maravilhoso%2C%20como%20fa%C3%A7o%20pra%20marcar%20um%20hor%C3%A1rio%20com%20voc%C3%AA%3F",
+   instagram: "@vanessamafra_especialistanails",
+diff --git a/client/src/pages/modelo-1.tsx b/client/src/pages/modelo-1.tsx
+index d4a863d..515a3a9 100644
+--- a/client/src/pages/modelo-1.tsx
++++ b/client/src/pages/modelo-1.tsx
+@@ -17,6 +17,7 @@ import { useIsMobile } from "@/hooks/useMobile";
+ import Nav from "@/components/Nav";
+ import PhotoFrame from "@/components/PhotoFrame";
+ import Hero, { RotatingSeal } from "@/components/Hero";
++import MapaLocalizacao from "@/components/MapaLocalizacao";
+ import { CONFIG } from "@/lib/siteConfig";
+ 
+ // =============================================================================
+@@ -848,22 +849,29 @@ function ContatoSection() {
+                       {label}
+                     </span>
+                     {label === "Endereço" ? (
+-                      <a
+-                        href={CONFIG.enderecoMaps}
+-                        target="_blank"
+-                        rel="noopener noreferrer"
+-                        style={{
+-                          fontFamily: "DM Sans, Inter, sans-serif",
+-                          fontSize: isMobile ? 15 : 16,
+-                          color: c.fundo,
+-                          opacity: 0.7,
+-                          lineHeight: 1.5,
+-                          display: "inline-block",
+-                          whiteSpace: "pre-line",
+-                        }}
+-                      >
+-                        {valor}
+-                      </a>
++                      <>
++                        <a
++                          href={CONFIG.enderecoMaps}
++                          target="_blank"
++                          rel="noopener noreferrer"
++                          style={{
++                            fontFamily: "DM Sans, Inter, sans-serif",
++                            fontSize: isMobile ? 15 : 16,
++                            color: c.fundo,
++                            opacity: 0.7,
++                            lineHeight: 1.5,
++                            display: "inline-block",
++                            whiteSpace: "pre-line",
++                          }}
++                        >
++                          {valor}
++                        </a>
++                        <div style={{ marginTop: 12, maxWidth: 420 }}>
++                          <MapaLocalizacao
++                            embedUrl={CONFIG.enderecoMapsEmbed}
++                          />
++                        </div>
++                      </>
+                     ) : label === "Instagram" ? (
+                       <a
+                         href={`https://instagram.com/${CONFIG.instagram.replace("@", "")}`}

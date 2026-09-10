@@ -17,6 +17,7 @@ import { useIsMobile } from "@/hooks/useMobile";
 import Nav from "@/components/Nav";
 import PhotoFrame from "@/components/PhotoFrame";
 import Hero, { RotatingSeal } from "@/components/Hero";
+import MapaLocalizacao from "@/components/MapaLocalizacao";
 import { CONFIG } from "@/lib/siteConfig";
 
 // =============================================================================
@@ -306,7 +307,7 @@ function ServicosSection() {
         <ScrollReveal>
           <SectionLabel
             numero="II"
-            label={"Serviços de\nUnhas em Gel"}
+            label={"Serviços"}
             color={c.fundo}
             as="h2"
           />
@@ -474,7 +475,7 @@ function DepoimentosSection() {
         <ScrollReveal>
           <SectionLabel
             numero="III"
-            label={"Avaliações de clientes\nno Google Mapas"}
+            label={"Avaliações no Google Mapas"}
             as="h2"
           />
           <Filete />
@@ -691,7 +692,7 @@ function DuvidasSection() {
         <ScrollReveal>
           <SectionLabel
             numero="IV"
-            label={"Dúvidas Frequentes\nsobre Unhas em Gel"}
+            label={"Dúvidas Frequentes"}
             color={c.fundo}
             as="h2"
           />
@@ -848,22 +849,29 @@ function ContatoSection() {
                       {label}
                     </span>
                     {label === "Endereço" ? (
-                      <a
-                        href={CONFIG.enderecoMaps}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          fontFamily: "DM Sans, Inter, sans-serif",
-                          fontSize: isMobile ? 15 : 16,
-                          color: c.fundo,
-                          opacity: 0.7,
-                          lineHeight: 1.5,
-                          display: "inline-block",
-                          whiteSpace: "pre-line",
-                        }}
-                      >
-                        {valor}
-                      </a>
+                      <>
+                        <a
+                          href={CONFIG.enderecoMaps}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            fontFamily: "DM Sans, Inter, sans-serif",
+                            fontSize: isMobile ? 15 : 16,
+                            color: c.fundo,
+                            opacity: 0.7,
+                            lineHeight: 1.5,
+                            display: "inline-block",
+                            whiteSpace: "pre-line",
+                          }}
+                        >
+                          {valor}
+                        </a>
+                        <div style={{ marginTop: 12, maxWidth: 420 }}>
+                          <MapaLocalizacao
+                            embedUrl={CONFIG.enderecoMapsEmbed}
+                          />
+                        </div>
+                      </>
                     ) : label === "Instagram" ? (
                       <a
                         href={`https://instagram.com/${CONFIG.instagram.replace("@", "")}`}
